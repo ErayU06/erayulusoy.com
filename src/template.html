@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{meta_title}}</title>
+<meta name="description" content="{{meta_desc}}">
+<meta name="author" content="Eray Ulusoy">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="{{url}}">
+<link rel="alternate" hreflang="en" href="https://erayulusoy.com/">
+<link rel="alternate" hreflang="tr" href="https://erayulusoy.com/tr/">
+<link rel="alternate" hreflang="x-default" href="https://erayulusoy.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Eray Ulusoy">
+<meta property="og:title" content="{{meta_title}}">
+<meta property="og:description" content="{{og_desc}}">
+<meta property="og:url" content="{{url}}">
+<meta property="og:locale" content="{{og_locale}}">
+<meta property="og:locale:alternate" content="{{og_locale_alt}}">
+<meta property="og:image" content="https://erayulusoy.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Eray Ulusoy · Websites, Business Applications and Cloud">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{meta_title}}">
+<meta name="twitter:description" content="{{og_desc}}">
+<meta name="twitter:image" content="https://erayulusoy.com/og-image.jpg">
+<meta name="theme-color" content="#0F1626">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="{{base}}favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{base}}apple-touch-icon.png">
+<link rel="manifest" href="{{base}}site.webmanifest">
+<link rel="preload" href="{{base}}assets/fonts/playfair-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{base}}assets/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{base}}assets/style.css?v={{ver}}">
+<script src="{{base}}assets/boot.js?v={{ver}}"></script>
+<script type="application/ld+json">{{jsonld}}</script>
+</head>
+<body>
+<a class="skip" href="#main">{{skip}}</a>
+
+<nav class="nav" id="nav" aria-label="{{nav_label}}">
+  <div class="topbar">
+    <div class="wrap">
+      <span class="lft"><i></i>{{accepting}}</span>
+      <span class="rgt">
+        <a href="mailto:contact@erayulusoy.com"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="1.5" y="3.5" width="13" height="9"/><path d="m1.5 4 6.5 5 6.5-5"/></svg>contact@erayulusoy.com</a>
+        <a href="https://www.linkedin.com/in/eray-u-163bb5373" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.6 5.6H1.2V15h2.4V5.6ZM2.4 1.2a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8ZM15 9.8c0-2.5-1.3-4.4-3.7-4.4-1.2 0-2 .6-2.4 1.2V5.6H6.6V15H9v-5c0-1.2.4-2.2 1.7-2.2s1.6 1.2 1.6 2.3V15H15V9.8Z"/></svg>LinkedIn</a>
+      </span>
+    </div>
+  </div>
+  <div class="wrap">
+    <a class="mark" href="{{home}}">Eray Ulusoy <small>{{consulting}}</small></a>
+    <ul>
+      <li><a href="#services">{{n_services}}</a></li>
+      <li><a href="#approach">{{n_approach}}</a></li>
+      <li><a href="#engagements">{{n_engagements}}</a></li>
+      <li><a href="#about">{{n_about}}</a></li>
+    </ul>
+    <div class="nav-right">
+      <span class="lang" aria-label="{{lang_label}}">
+        <a href="{{en_href}}" hreflang="en" lang="en" data-lang-link="en"{{en_current}}>EN</a><span aria-hidden="true">/</span><a href="{{tr_href}}" hreflang="tr" lang="tr" data-lang-link="tr"{{tr_current}}>TR</a>
+      </span>
+      <a class="btn" href="#contact">{{cta_consult}}</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="{{menu_open}}">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M3 9h20M3 17h20"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <a href="#services">{{n_services}}</a>
+  <a href="#approach">{{n_approach}}</a>
+  <a href="#engagements">{{n_engagements}}</a>
+  <a href="#about">{{n_about}}</a>
+  <a href="#contact">{{n_contact}}</a>
+  <div class="mm-contact">
+    <a href="mailto:contact@erayulusoy.com">contact@erayulusoy.com</a>
+    <a class="li-btn" href="https://www.linkedin.com/in/eray-u-163bb5373" target="_blank" rel="noopener noreferrer"><span class="li-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 8.4H1.8V22h3.6V8.4ZM3.6 2a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2ZM22.2 14.2c0-3.6-1.9-6.1-5.3-6.1-1.7 0-2.9.9-3.4 1.8V8.4H10V22h3.6v-7.1c0-1.8.6-3.1 2.4-3.1 1.9 0 2.5 1.6 2.5 3.3V22h3.7v-7.8Z"/></svg></span>LinkedIn</a>
+    <a href="{{other_href}}" data-lang-link="{{other_lang}}">{{other_label}}</a>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <canvas id="constellation" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="label fade m0">{{hero_eyebrow}}</p>
+      <h1><span class="ln"><span>{{h1_a}}</span></span><span class="ln"><span>{{h1_b}}</span></span></h1>
+      <p class="sub fade">{{hero_sub}}</p>
+      <div class="cta fade">
+        <a class="btn solid" href="#contact">{{cta_consult}} <span class="arr" aria-hidden="true">→</span></a>
+        <a class="li-btn" href="https://www.linkedin.com/in/eray-u-163bb5373" target="_blank" rel="noopener noreferrer"><span class="li-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 8.4H1.8V22h3.6V8.4ZM3.6 2a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2ZM22.2 14.2c0-3.6-1.9-6.1-5.3-6.1-1.7 0-2.9.9-3.4 1.8V8.4H10V22h3.6v-7.1c0-1.8.6-3.1 2.4-3.1 1.9 0 2.5 1.6 2.5 3.3V22h3.7v-7.8Z"/></svg></span>{{li_connect}}</a>
+      </div>
+    </div>
+    <aside class="brief" aria-label="{{brief_label}}">
+      <div class="brief-head"><span class="label">{{brief_title}}</span><span class="status"><i></i>{{brief_status}}</span></div>
+      <pre id="briefOut" data-lines='{{brief_lines}}'></pre>
+    </aside>
+  </div>
+</header>
+
+<div class="facts">
+  <div class="wrap">
+    <div class="fact"><b>4<sup>+</sup></b><span>{{f1}}</span></div>
+    <div class="fact"><b>3</b><span>{{f2}}</span></div>
+    <div class="fact"><b>1:1</b><span>{{f3}}</span></div>
+    <div class="fact"><b>AWS</b><span>{{f4}}</span></div>
+  </div>
+</div>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+<main id="main">
+  <section class="sec paper intro" aria-labelledby="perspective-h">
+    <div class="wrap">
+      <h2 class="label rv" id="perspective-h">{{s1_label}}</h2>
+      <div>
+        <blockquote class="rv">{{quote}}</blockquote>
+        <div class="sig rv" id="sig">
+          <svg viewBox="0 0 150 48" aria-hidden="true"><path d="M4 34c8-14 14-24 20-24 5 0-6 22-2 22 5 0 9-14 14-14-2 6-4 12 0 12 6 0 10-16 16-16-4 10-6 18-1 18 6 0 12-22 18-22-6 18 2 24 10 6 2 8 6 10 12 4 6-6 10-8 18-8 10 0 18 4 34 2"/></svg>
+          <div><strong>Eray Ulusoy</strong><small>{{role}}</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="services" aria-labelledby="services-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="l rv"><div class="label">{{s2_label}}</div><h2 id="services-h">{{s2_title}}</h2></div>
+        <p class="rv">{{s2_lead}}</p>
+      </div>
+      <div class="svc-list">
+        <article class="svc rv">
+          <span class="num">i.</span>
+          <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="3" y="7" width="28" height="20"/><path d="M3 12h28"/><path d="M8 18h9M8 22h6"/><rect x="21" y="16" width="6" height="7"/></svg>{{web_t}}</h3>
+          <div><p>{{web_p}}</p>
+            <ul><li>{{web_1}}</li><li>{{web_2}}</li><li>{{web_3}}</li></ul></div>
+          <a class="ulink go" href="#contact">{{discuss}}</a>
+        </article>
+        <article class="svc rv">
+          <span class="num">ii.</span>
+          <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="3" y="6" width="20" height="16"/><path d="M3 10h20"/><rect x="20" y="13" width="11" height="17" rx="1.5"/><path d="M24 27h3"/></svg>{{dev_t}}</h3>
+          <div><p>{{dev_p}}</p>
+            <ul><li>{{dev_1}}</li><li>{{dev_2}}</li><li>{{dev_3}}</li></ul></div>
+          <a class="ulink go" href="#contact">{{discuss}}</a>
+        </article>
+        <article class="svc rv">
+          <span class="num">iii.</span>
+          <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M9 24c-3.5 0-6-2.4-6-5.6 0-3 2.2-5.3 5.2-5.6C9.1 9.4 12.2 7 16 7c4.7 0 8.3 3.4 8.8 7.8 2.6.5 4.2 2.6 4.2 5 0 3-2.5 5.2-5.6 5.2"/><path d="M17 30V20M13 24l4-4 4 4"/></svg>{{cl_t}}</h3>
+          <div><p>{{cl_p}}</p>
+            <ul><li>{{cl_1}}</li><li>{{cl_2}}</li><li>{{cl_3}}</li></ul></div>
+          <a class="ulink go" href="#contact">{{discuss}}</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec paper" id="approach" aria-labelledby="approach-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="l rv"><div class="label">{{s3_label}}</div><h2 id="approach-h">{{s3_title}}</h2></div>
+        <p class="rv">{{s3_lead}}</p>
+      </div>
+      <div class="steps" id="steps">
+        <div class="track" aria-hidden="true"><i></i></div>
+        <div class="step rv"><span class="rn">I.</span><h3>{{st1_t}}</h3><p>{{st1_p}}</p></div>
+        <div class="step rv"><span class="rn">II.</span><h3>{{st2_t}}</h3><p>{{st2_p}}</p></div>
+        <div class="step rv"><span class="rn">III.</span><h3>{{st3_t}}</h3><p>{{st3_p}}</p></div>
+        <div class="step rv"><span class="rn">IV.</span><h3>{{st4_t}}</h3><p>{{st4_p}}</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="engagements" aria-labelledby="eng-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="l rv"><div class="label">{{s4_label}}</div><h2 id="eng-h">{{s4_title}}</h2></div>
+        <p class="rv">{{s4_lead}}</p>
+      </div>
+      <div class="eng">
+        <article class="rv">
+          <span class="tag">{{e1_tag}}</span>
+          <h3>{{e1_t}}</h3>
+          <p>{{e1_p}}</p>
+          <dl><div><dt>{{len}}</dt><dd>{{e1_len}}</dd></div><div><dt>{{receive}}</dt><dd>{{e1_rec}}</dd></div></dl>
+        </article>
+        <article class="rv">
+          <span class="tag">{{e2_tag}}</span>
+          <h3>{{e2_t}}</h3>
+          <p>{{e2_p}}</p>
+          <dl><div><dt>{{len}}</dt><dd>{{e2_len}}</dd></div><div><dt>{{receive}}</dt><dd>{{e2_rec}}</dd></div></dl>
+        </article>
+        <article class="rv">
+          <span class="tag">{{e3_tag}}</span>
+          <h3>{{e3_t}}</h3>
+          <p>{{e3_p}}</p>
+          <dl><div><dt>{{len}}</dt><dd>{{e3_len}}</dd></div><div><dt>{{receive}}</dt><dd>{{e3_rec}}</dd></div></dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec paper about" id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <figure class="portrait rv m0">
+        <picture>
+          <source srcset="{{base}}assets/portrait.webp" type="image/webp">
+          <img src="{{base}}assets/portrait.jpg" alt="{{portrait_alt}}" width="720" height="900" loading="lazy" decoding="async">
+        </picture>
+        <figcaption>Eray Ulusoy</figcaption>
+      </figure>
+      <div class="about-body">
+        <div class="label rv">{{s5_label}}</div>
+        <h2 class="rv" id="about-h">{{about_t}}</h2>
+        <p class="lead rv">{{about_lead}}</p>
+        <p class="rv">{{about_p}}</p>
+        <div class="about-actions rv">
+          <a class="li-btn" href="https://www.linkedin.com/in/eray-u-163bb5373" target="_blank" rel="noopener noreferrer"><span class="li-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 8.4H1.8V22h3.6V8.4ZM3.6 2a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2ZM22.2 14.2c0-3.6-1.9-6.1-5.3-6.1-1.7 0-2.9.9-3.4 1.8V8.4H10V22h3.6v-7.1c0-1.8.6-3.1 2.4-3.1 1.9 0 2.5 1.6 2.5 3.3V22h3.7v-7.8Z"/></svg></span>{{li_view}}</a>
+        </div>
+        <div class="creds rv">
+          <div class="label">{{cert_track}}</div>
+          <div class="cred"><div><b>AWS Certified Cloud Practitioner</b><small>{{c1}}</small></div><span class="st now">{{inprog}}</span></div>
+          <div class="cred"><div><b>AWS Certified Solutions Architect – Associate</b><small>{{c2}}</small></div><span class="st">{{planned}}</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="princ-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="l rv"><div class="label">{{s6_label}}</div><h2 id="princ-h">{{s6_title}}</h2></div>
+      </div>
+      <div class="princ">
+        <article class="rv"><div class="rule draw"></div><h3>{{p1_t}}</h3><p>{{p1_p}}</p></article>
+        <article class="rv"><div class="rule draw"></div><h3>{{p2_t}}</h3><p>{{p2_p}}</p></article>
+        <article class="rv"><div class="rule draw"></div><h3>{{p3_t}}</h3><p>{{p3_p}}</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec paper contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div>
+        <div class="label rv">{{s7_label}}</div>
+        <h2 class="rv mt18" id="contact-h">{{contact_t}}</h2>
+        <p class="lede rv">{{contact_lede}}</p>
+        <div class="channels rv">
+          <div class="ch"><span class="k">{{email}}</span><a class="v" id="mailAddr" href="mailto:contact@erayulusoy.com">contact@erayulusoy.com</a><button class="copy" type="button" id="copyMail" data-label="{{copy}}" data-done="{{copied}}">{{copy}}</button></div>
+          <div class="ch"><span class="k">{{location}}</span><span class="v">{{location_v}}</span><span></span></div>
+        </div>
+        <a class="li-card rv" href="https://www.linkedin.com/in/eray-u-163bb5373" target="_blank" rel="noopener noreferrer">
+          <span class="li-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 8.4H1.8V22h3.6V8.4ZM3.6 2a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2ZM22.2 14.2c0-3.6-1.9-6.1-5.3-6.1-1.7 0-2.9.9-3.4 1.8V8.4H10V22h3.6v-7.1c0-1.8.6-3.1 2.4-3.1 1.9 0 2.5 1.6 2.5 3.3V22h3.7v-7.8Z"/></svg></span>
+          <span><b>{{li_card_t}}</b><small>linkedin.com/in/eray-u-163bb5373</small></span>
+          <span class="arr" aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <form id="enquiry" class="rv" novalidate data-msg-name="{{m_name}}" data-msg-email="{{m_email}}" data-msg-offline="{{m_offline}}" data-msg-sending="{{m_sending}}" data-msg-sent="{{m_sent}}" data-msg-error="{{m_error}}">
+        <div class="field"><label for="f-name">{{f_name}}</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="{{ph_name}}" maxlength="100" required></div>
+        <div class="field"><label for="f-company">{{f_company}}</label><input id="f-company" name="company" type="text" autocomplete="organization" placeholder="{{ph_company}}" maxlength="120"></div>
+        <div class="field full"><label for="f-email">{{email}}</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="{{ph_email}}" maxlength="160" required></div>
+        <fieldset class="field full">
+          <legend>{{f_service}}</legend>
+          <div class="chips">
+            <input type="radio" name="service" id="s-web" value="Web design" checked><label for="s-web">{{ch_web}}</label>
+            <input type="radio" name="service" id="s-app" value="Business application"><label for="s-app">{{ch_dev}}</label>
+            <input type="radio" name="service" id="s-cloud" value="Cloud"><label for="s-cloud">{{ch_cloud}}</label>
+            <input type="radio" name="service" id="s-unsure" value="Not sure yet"><label for="s-unsure">{{ch_unsure}}</label>
+          </div>
+        </fieldset>
+        <div class="field full"><label for="f-msg">{{f_msg}}</label><textarea id="f-msg" name="message" maxlength="4000" placeholder="{{ph_msg}}"></textarea></div>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="skip">
+        <div class="form-foot">
+          <p class="form-note" id="formNote" role="status">{{form_note}}</p>
+          <button class="btn solid" type="submit">{{send}} <span class="arr" aria-hidden="true">→</span></button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="big">Eray<br>Ulusoy<em>.</em></div>
+    <div class="meta"><span class="label">{{footer_tag}}</span><a class="plain" href="mailto:contact@erayulusoy.com">contact@erayulusoy.com</a><a class="plain" href="https://www.linkedin.com/in/eray-u-163bb5373" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="plain" href="{{other_href}}" data-lang-link="{{other_lang}}">{{other_label}}</a><span>© 2026 Eray Ulusoy</span></div>
+  </div>
+</footer>
+
+<script src="{{base}}assets/main.js?v={{ver}}" defer></script>
+</body>
+</html>
