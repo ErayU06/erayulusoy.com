@@ -111,7 +111,7 @@
   }));
 
   /* form: paste your Formspree form ID below (e.g. 'xyzabcd') to start receiving enquiries by email */
-  const FORMSPREE_ID = '';
+  const FORMSPREE_ID = 'mwlvgwnw';
   const form = document.getElementById('enquiry'), note = document.getElementById('formNote');
   const t = (k, first) => (form.dataset[k] || '').replace('{name}', first || '');
   form.addEventListener('submit', async e => {
