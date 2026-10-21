@@ -233,6 +233,8 @@ section.sec { padding-block: 140px; }
 
 /* about */
 .about .wrap { display: grid; grid-template-columns: 5fr 7fr; gap: 88px; align-items: start; }
+.about-side { display: grid; gap: 22px; position: sticky; top: 120px; }
+.about-side h2 { font-size: clamp(36px, 4.4vw, 60px); line-height: 1.08; }
 .portrait { position: relative; aspect-ratio: 4 / 5; max-width: 100%; background: var(--ink); overflow: hidden; display: grid; place-items: center; }
 .portrait::before { content: ""; position: absolute; inset: 14px; border: 1px solid var(--hair-gold); }
 .portrait canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -400,3 +402,8 @@ footer .meta { display: grid; gap: 8px; text-align: right; font-size: 13px; colo
 .skip:focus { left: 16px; top: 16px; }
 @media (max-width: 1000px) { .lang { margin-right: 4px; } }
 @media (max-width: 600px) { .mark small { display: none; } .nav-right { gap: 10px; } .mark { font-size: 20px; white-space: nowrap; } }
+
+/* scroll progress line */
+.progress { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; height: 2px; z-index: 70; pointer-events: none; }
+.progress i { display: block; height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-soft)); transform-origin: left; transform: scaleX(0); box-shadow: 0 0 10px rgba(212,188,138,.45); }
+@media (max-width: 1000px) { .about-side { position: static; } }

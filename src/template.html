@@ -28,7 +28,9 @@
 <meta name="twitter:image" content="https://erayulusoy.com/og-image.jpg">
 <meta name="theme-color" content="#0F1626">
 <meta name="format-detection" content="telephone=no">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="{{base}}favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{{base}}favicon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="{{base}}apple-touch-icon.png">
 <link rel="manifest" href="{{base}}site.webmanifest">
 <link rel="preload" href="{{base}}assets/fonts/playfair-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -38,6 +40,7 @@
 <script type="application/ld+json">{{jsonld}}</script>
 </head>
 <body>
+<div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
 <a class="skip" href="#main">{{skip}}</a>
 
 <nav class="nav" id="nav" aria-label="{{nav_label}}">
@@ -205,16 +208,11 @@
 
   <section class="sec paper about" id="about" aria-labelledby="about-h">
     <div class="wrap">
-      <figure class="portrait rv m0">
-        <picture>
-          <source srcset="{{base}}assets/portrait.webp" type="image/webp">
-          <img src="{{base}}assets/portrait.jpg" alt="{{portrait_alt}}" width="720" height="900" loading="lazy" decoding="async">
-        </picture>
-        <figcaption>Eray Ulusoy</figcaption>
-      </figure>
+      <div class="about-side rv">
+        <div class="label">{{s5_label}}</div>
+        <h2 id="about-h">{{about_t}}</h2>
+      </div>
       <div class="about-body">
-        <div class="label rv">{{s5_label}}</div>
-        <h2 class="rv" id="about-h">{{about_t}}</h2>
         <p class="lead rv">{{about_lead}}</p>
         <p class="rv">{{about_p}}</p>
         <div class="about-actions rv">

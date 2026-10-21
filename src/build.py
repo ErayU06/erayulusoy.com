@@ -257,10 +257,10 @@ def jsonld(d):
         '@context': 'https://schema.org',
         '@graph': [
             {'@type': 'Person', '@id': 'https://erayulusoy.com/#person', 'name': 'Eray Ulusoy',
-             'url': 'https://erayulusoy.com/', 'image': 'https://erayulusoy.com/assets/portrait.jpg',
+             'url': 'https://erayulusoy.com/', 'image': 'https://erayulusoy.com/og-image.jpg',
              'jobTitle': 'Web Designer & Software Engineer' if d['lang'] == 'en' else 'Web Tasarımcı ve Yazılım Mühendisi',
              'email': 'mailto:contact@erayulusoy.com', 'sameAs': [LI],
-             'knowsAbout': ['Web design', 'Web development', 'Mobile app development', 'Business applications', 'Cloud computing', 'AWS', 'Cybersecurity', 'SEO'],
+             'knowsAbout': ['Web design', 'Web development', 'Mobile app development', 'Business applications', 'Cloud computing', 'AWS', 'SEO'],
              'knowsLanguage': ['tr', 'en']},
             {'@type': 'ProfessionalService', '@id': 'https://erayulusoy.com/#business', 'name': 'Eray Ulusoy',
              'url': d['url'], 'image': 'https://erayulusoy.com/og-image.jpg', 'email': 'contact@erayulusoy.com',
@@ -302,7 +302,7 @@ def build():
         shutil.rmtree(DIST)
     os.makedirs(os.path.join(DIST, 'tr'))
     shutil.copytree(os.path.join(ROOT, 'assets'), os.path.join(DIST, 'assets'))
-    for f in ['favicon.svg', 'apple-touch-icon.png', 'og-image.jpg', 'robots.txt', 'sitemap.xml', '_headers', 'site.webmanifest']:
+    for f in ['favicon.svg', 'favicon.ico', 'favicon-192.png', 'apple-touch-icon.png', 'og-image.jpg', 'robots.txt', 'sitemap.xml', '_headers', 'site.webmanifest']:
         shutil.copy(os.path.join(ROOT, f), DIST)
     os.makedirs(os.path.join(DIST, '.well-known'))
     shutil.copy(os.path.join(ROOT, 'security.txt'), os.path.join(DIST, '.well-known', 'security.txt'))

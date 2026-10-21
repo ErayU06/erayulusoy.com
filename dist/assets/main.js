@@ -3,6 +3,13 @@
   'use strict';
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* scroll progress line */
+  const bar = document.getElementById('progressBar');
+  let ticking = false;
+  const setBar = () => { const max = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`; ticking = false; };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(setBar); } }, { passive: true });
+  addEventListener('resize', setBar); setBar();
+
   /* nav: transparent over hero, solid after */
   const nav = document.getElementById('nav');
   const onScroll = () => nav.classList.toggle('solid', scrollY > 40);

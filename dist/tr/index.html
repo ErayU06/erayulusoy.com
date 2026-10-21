@@ -28,16 +28,19 @@
 <meta name="twitter:image" content="https://erayulusoy.com/og-image.jpg">
 <meta name="theme-color" content="#0F1626">
 <meta name="format-detection" content="telephone=no">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="manifest" href="../site.webmanifest">
 <link rel="preload" href="../assets/fonts/playfair-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/style.css?v=202610220028">
-<script src="../assets/boot.js?v=202610220028"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://erayulusoy.com/#person", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/", "image": "https://erayulusoy.com/assets/portrait.jpg", "jobTitle": "Web Tasarımcı ve Yazılım Mühendisi", "email": "mailto:contact@erayulusoy.com", "sameAs": ["https://www.linkedin.com/in/eray-u-163bb5373"], "knowsAbout": ["Web design", "Web development", "Mobile app development", "Business applications", "Cloud computing", "AWS", "Cybersecurity", "SEO"], "knowsLanguage": ["tr", "en"]}, {"@type": "ProfessionalService", "@id": "https://erayulusoy.com/#business", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/tr/", "image": "https://erayulusoy.com/og-image.jpg", "email": "contact@erayulusoy.com", "founder": {"@id": "https://erayulusoy.com/#person"}, "sameAs": ["https://www.linkedin.com/in/eray-u-163bb5373"], "areaServed": "Worldwide", "description": "Eray Ulusoy; işletmelere ve şirketlere güvenli ve profesyonel web sitesi tasarımı, web ve mobil uygulama geliştirme ve AWS bulut bilişim hizmetleri sunar.", "knowsAbout": ["Web sitesi tasarımı", "Web sitesi yapımı", "Mobil uygulama geliştirme", "Kurumsal yazılım", "Bulut bilişim"]}, {"@type": "WebSite", "@id": "https://erayulusoy.com/#website", "url": "https://erayulusoy.com/", "name": "Eray Ulusoy", "inLanguage": ["en", "tr"], "publisher": {"@id": "https://erayulusoy.com/#person"}}]}</script>
+<link rel="stylesheet" href="../assets/style.css?v=202610220044">
+<script src="../assets/boot.js?v=202610220044"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://erayulusoy.com/#person", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/", "image": "https://erayulusoy.com/og-image.jpg", "jobTitle": "Web Tasarımcı ve Yazılım Mühendisi", "email": "mailto:contact@erayulusoy.com", "sameAs": ["https://www.linkedin.com/in/eray-u-163bb5373"], "knowsAbout": ["Web design", "Web development", "Mobile app development", "Business applications", "Cloud computing", "AWS", "SEO"], "knowsLanguage": ["tr", "en"]}, {"@type": "ProfessionalService", "@id": "https://erayulusoy.com/#business", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/tr/", "image": "https://erayulusoy.com/og-image.jpg", "email": "contact@erayulusoy.com", "founder": {"@id": "https://erayulusoy.com/#person"}, "sameAs": ["https://www.linkedin.com/in/eray-u-163bb5373"], "areaServed": "Worldwide", "description": "Eray Ulusoy; işletmelere ve şirketlere güvenli ve profesyonel web sitesi tasarımı, web ve mobil uygulama geliştirme ve AWS bulut bilişim hizmetleri sunar.", "knowsAbout": ["Web sitesi tasarımı", "Web sitesi yapımı", "Mobil uygulama geliştirme", "Kurumsal yazılım", "Bulut bilişim"]}, {"@type": "WebSite", "@id": "https://erayulusoy.com/#website", "url": "https://erayulusoy.com/", "name": "Eray Ulusoy", "inLanguage": ["en", "tr"], "publisher": {"@id": "https://erayulusoy.com/#person"}}]}</script>
 </head>
 <body>
+<div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
 <a class="skip" href="#main">İçeriğe geç</a>
 
 <nav class="nav" id="nav" aria-label="Ana menü">
@@ -205,16 +208,11 @@
 
   <section class="sec paper about" id="about" aria-labelledby="about-h">
     <div class="wrap">
-      <figure class="portrait rv m0">
-        <picture>
-          <source srcset="../assets/portrait.webp" type="image/webp">
-          <img src="../assets/portrait.jpg" alt="Eray Ulusoy portresi" width="720" height="900" loading="lazy" decoding="async">
-        </picture>
-        <figcaption>Eray Ulusoy</figcaption>
-      </figure>
+      <div class="about-side rv">
+        <div class="label">IV — Hakkımda</div>
+        <h2 id="about-h">Hem şık hem güvenli.</h2>
+      </div>
       <div class="about-body">
-        <div class="label rv">IV — Hakkımda</div>
-        <h2 class="rv" id="about-h">Hem şık hem güvenli.</h2>
         <p class="lead rv">Son dört yıldır yazılım geliştiriyor ve siber güvenlik alanında çalışıyorum. Bugün işletmelerin internetteki varlığının tamamında yardımcı oluyorum: müşterilerin gördüğü web sitesi, ekiplerin her gün kullandığı uygulamalar ve bunların arkasındaki bulut altyapısı. Güvenlik geçmişim sayesinde her proje yaygın saldırılara karşı en baştan korunur, sonradan yamanmaz.</p>
         <p class="rv">Kendi adımla bağımsız çalışıyorum; yani her müşteri ilk görüşmeden yayına ve sonrasına kadar doğrudan benimle çalışıyor. Şu anda AWS sertifika süreciyle bulut alanındaki uzmanlığımı derinleştiriyorum.</p>
         <div class="about-actions rv">
@@ -289,6 +287,6 @@
   </div>
 </footer>
 
-<script src="../assets/main.js?v=202610220028" defer></script>
+<script src="../assets/main.js?v=202610220044" defer></script>
 </body>
 </html>
