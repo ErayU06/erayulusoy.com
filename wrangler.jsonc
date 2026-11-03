@@ -1,0 +1,11 @@
+// Cloudflare Workers static assets config. Deployed by .github/workflows/deploy.yml
+// (or by hand: python3 src/build.py && npx wrangler deploy).
+{
+  "name": "ancient-silence-129c",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
