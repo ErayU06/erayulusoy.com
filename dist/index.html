@@ -35,8 +35,8 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preload" href="assets/fonts/playfair-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/style.css?v=202610220044">
-<script src="assets/boot.js?v=202610220044"></script>
+<link rel="stylesheet" href="assets/style.css?v=202611031650">
+<script src="assets/boot.js?v=202611031650"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://erayulusoy.com/#person", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/", "image": "https://erayulusoy.com/og-image.jpg", "jobTitle": "Web Designer & Software Engineer", "email": "mailto:contact@erayulusoy.com", "sameAs": ["https://www.linkedin.com/in/eray-u-163bb5373"], "knowsAbout": ["Web design", "Web development", "Mobile app development", "Business applications", "Cloud computing", "AWS", "SEO"], "knowsLanguage": ["tr", "en"]}, {"@type": "ProfessionalService", "@id": "https://erayulusoy.com/#business", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/", "image": "https://erayulusoy.com/og-image.jpg", "email": "contact@erayulusoy.com", "founder": {"@id": "https://erayulusoy.com/#person"}, "sameAs": ["https://www.linkedin.com/in/eray-u-163bb5373"], "areaServed": "Worldwide", "description": "Eray Ulusoy builds professional, secure websites and business applications for companies and sets up reliable cloud infrastructure on AWS.", "knowsAbout": ["Website design", "Website development", "Mobile app development", "Business software", "Cloud computing"]}, {"@type": "WebSite", "@id": "https://erayulusoy.com/#website", "url": "https://erayulusoy.com/", "name": "Eray Ulusoy", "inLanguage": ["en", "tr"], "publisher": {"@id": "https://erayulusoy.com/#person"}}]}</script>
 </head>
 <body>
@@ -256,7 +256,7 @@
           <span class="arr" aria-hidden="true">↗</span>
         </a>
       </div>
-      <form id="enquiry" class="rv" novalidate data-msg-name="Please enter your name." data-msg-email="Please enter a valid email address so I can reply." data-msg-offline="Thank you, {name}. Online sending is not connected yet, so please email contact@erayulusoy.com directly." data-msg-sending="Sending…" data-msg-sent="Thank you, {name}. Your enquiry has been sent and I will reply within two working days." data-msg-error="Your enquiry could not be sent. Please try again or email contact@erayulusoy.com.">
+      <form id="enquiry" class="rv" novalidate data-msg-name="Please enter your name." data-msg-email="Please enter a valid email address so I can reply." data-msg-offline="Thank you, {name}. Online sending is not connected yet, so please email contact@erayulusoy.com directly." data-msg-sending="Sending…" data-msg-sent="Thank you, {name}. Your enquiry has been sent and I will reply within two working days." data-msg-error="Your enquiry could not be sent. Please try again or email contact@erayulusoy.com." data-msg-consent="Please tick the consent box, or email contact@erayulusoy.com directly.">
         <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Your name" maxlength="100" required></div>
         <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Company name" maxlength="120"></div>
         <div class="field full"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" maxlength="160" required></div>
@@ -270,6 +270,10 @@
           </div>
         </fieldset>
         <div class="field full"><label for="f-msg">Project summary</label><textarea id="f-msg" name="message" maxlength="4000" placeholder="What would you like to build, and roughly when do you need it?"></textarea></div>
+        <div class="field full consent">
+          <label class="check" for="f-consent"><input id="f-consent" name="transfer_consent" type="checkbox" value="yes" required><span>I consent to my details being transferred to Formspree, Inc. in the USA so that this message can be delivered. You can also simply email me instead.</span></label>
+          <p class="legal-note">How your details are handled: <a href="/kvkk/">KVKK Notice</a> · <a href="/privacy/">Privacy Policy</a></p>
+        </div>
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="skip">
         <div class="form-foot">
           <p class="form-note" id="formNote" role="status">Your details are used only to reply to your enquiry.</p>
@@ -283,10 +287,10 @@
 <footer>
   <div class="wrap">
     <div class="big">Eray<br>Ulusoy<em>.</em></div>
-    <div class="meta"><span class="label">Websites · Applications · Cloud</span><a class="plain" href="mailto:contact@erayulusoy.com">contact@erayulusoy.com</a><a class="plain" href="https://www.linkedin.com/in/eray-u-163bb5373" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="plain" href="/tr/" data-lang-link="tr">Türkçe</a><span>© 2026 Eray Ulusoy</span></div>
+    <div class="meta"><span class="label">Websites · Applications · Cloud</span><a class="plain" href="mailto:contact@erayulusoy.com">contact@erayulusoy.com</a><a class="plain" href="https://www.linkedin.com/in/eray-u-163bb5373" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="plain" href="/tr/" data-lang-link="tr">Türkçe</a><a class="plain" href="/privacy/">Privacy Policy</a><a class="plain" href="/kvkk/">KVKK Notice</a><span>© 2026 Eray Ulusoy</span></div>
   </div>
 </footer>
 
-<script src="assets/main.js?v=202610220044" defer></script>
+<script src="assets/main.js?v=202611031650" defer></script>
 </body>
 </html>

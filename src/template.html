@@ -256,7 +256,7 @@
           <span class="arr" aria-hidden="true">↗</span>
         </a>
       </div>
-      <form id="enquiry" class="rv" novalidate data-msg-name="{{m_name}}" data-msg-email="{{m_email}}" data-msg-offline="{{m_offline}}" data-msg-sending="{{m_sending}}" data-msg-sent="{{m_sent}}" data-msg-error="{{m_error}}">
+      <form id="enquiry" class="rv" novalidate data-msg-name="{{m_name}}" data-msg-email="{{m_email}}" data-msg-offline="{{m_offline}}" data-msg-sending="{{m_sending}}" data-msg-sent="{{m_sent}}" data-msg-error="{{m_error}}" data-msg-consent="{{m_consent}}">
         <div class="field"><label for="f-name">{{f_name}}</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="{{ph_name}}" maxlength="100" required></div>
         <div class="field"><label for="f-company">{{f_company}}</label><input id="f-company" name="company" type="text" autocomplete="organization" placeholder="{{ph_company}}" maxlength="120"></div>
         <div class="field full"><label for="f-email">{{email}}</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="{{ph_email}}" maxlength="160" required></div>
@@ -270,6 +270,10 @@
           </div>
         </fieldset>
         <div class="field full"><label for="f-msg">{{f_msg}}</label><textarea id="f-msg" name="message" maxlength="4000" placeholder="{{ph_msg}}"></textarea></div>
+        <div class="field full consent">
+          <label class="check" for="f-consent"><input id="f-consent" name="transfer_consent" type="checkbox" value="yes" required><span>{{consent_l}}</span></label>
+          <p class="legal-note">{{legal_note}}</p>
+        </div>
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="skip">
         <div class="form-foot">
           <p class="form-note" id="formNote" role="status">{{form_note}}</p>
@@ -283,7 +287,7 @@
 <footer>
   <div class="wrap">
     <div class="big">Eray<br>Ulusoy<em>.</em></div>
-    <div class="meta"><span class="label">{{footer_tag}}</span><a class="plain" href="mailto:contact@erayulusoy.com">contact@erayulusoy.com</a><a class="plain" href="https://www.linkedin.com/in/eray-u-163bb5373" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="plain" href="{{other_href}}" data-lang-link="{{other_lang}}">{{other_label}}</a><span>© 2026 Eray Ulusoy</span></div>
+    <div class="meta"><span class="label">{{footer_tag}}</span><a class="plain" href="mailto:contact@erayulusoy.com">contact@erayulusoy.com</a><a class="plain" href="https://www.linkedin.com/in/eray-u-163bb5373" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="plain" href="{{other_href}}" data-lang-link="{{other_lang}}">{{other_label}}</a><a class="plain" href="{{privacy_href}}">{{privacy_link}}</a><a class="plain" href="{{kvkk_href}}">{{kvkk_link}}</a><span>© 2026 Eray Ulusoy</span></div>
   </div>
 </footer>
 
