@@ -35,8 +35,8 @@
 <link rel="manifest" href="../site.webmanifest">
 <link rel="preload" href="../assets/fonts/playfair-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/style.css?v=202610220044">
-<script src="../assets/boot.js?v=202610220044"></script>
+<link rel="stylesheet" href="../assets/style.css?v=202611031650">
+<script src="../assets/boot.js?v=202611031650"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://erayulusoy.com/#person", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/", "image": "https://erayulusoy.com/og-image.jpg", "jobTitle": "Web Tasarımcı ve Yazılım Mühendisi", "email": "mailto:contact@erayulusoy.com", "sameAs": ["https://www.linkedin.com/in/eray-u-163bb5373"], "knowsAbout": ["Web design", "Web development", "Mobile app development", "Business applications", "Cloud computing", "AWS", "SEO"], "knowsLanguage": ["tr", "en"]}, {"@type": "ProfessionalService", "@id": "https://erayulusoy.com/#business", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/tr/", "image": "https://erayulusoy.com/og-image.jpg", "email": "contact@erayulusoy.com", "founder": {"@id": "https://erayulusoy.com/#person"}, "sameAs": ["https://www.linkedin.com/in/eray-u-163bb5373"], "areaServed": "Worldwide", "description": "Eray Ulusoy; işletmelere ve şirketlere güvenli ve profesyonel web sitesi tasarımı, web ve mobil uygulama geliştirme ve AWS bulut bilişim hizmetleri sunar.", "knowsAbout": ["Web sitesi tasarımı", "Web sitesi yapımı", "Mobil uygulama geliştirme", "Kurumsal yazılım", "Bulut bilişim"]}, {"@type": "WebSite", "@id": "https://erayulusoy.com/#website", "url": "https://erayulusoy.com/", "name": "Eray Ulusoy", "inLanguage": ["en", "tr"], "publisher": {"@id": "https://erayulusoy.com/#person"}}]}</script>
 </head>
 <body>
@@ -256,7 +256,7 @@
           <span class="arr" aria-hidden="true">↗</span>
         </a>
       </div>
-      <form id="enquiry" class="rv" novalidate data-msg-name="Lütfen adınızı yazın." data-msg-email="Size dönebilmem için lütfen geçerli bir e-posta adresi yazın." data-msg-offline="Teşekkürler {name}. Çevrim içi gönderim henüz bağlı değil, lütfen doğrudan contact@erayulusoy.com adresine yazın." data-msg-sending="Gönderiliyor…" data-msg-sent="Teşekkürler {name}. Mesajınız iletildi, iki iş günü içinde dönüş yapacağım." data-msg-error="Mesajınız gönderilemedi. Lütfen tekrar deneyin ya da contact@erayulusoy.com adresine yazın.">
+      <form id="enquiry" class="rv" novalidate data-msg-name="Lütfen adınızı yazın." data-msg-email="Size dönebilmem için lütfen geçerli bir e-posta adresi yazın." data-msg-offline="Teşekkürler {name}. Çevrim içi gönderim henüz bağlı değil, lütfen doğrudan contact@erayulusoy.com adresine yazın." data-msg-sending="Gönderiliyor…" data-msg-sent="Teşekkürler {name}. Mesajınız iletildi, iki iş günü içinde dönüş yapacağım." data-msg-error="Mesajınız gönderilemedi. Lütfen tekrar deneyin ya da contact@erayulusoy.com adresine yazın." data-msg-consent="Lütfen açık rıza kutusunu işaretleyin ya da doğrudan contact@erayulusoy.com adresine yazın.">
         <div class="field"><label for="f-name">Ad soyad</label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Adınız" maxlength="100" required></div>
         <div class="field"><label for="f-company">Şirket</label><input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Şirket adı" maxlength="120"></div>
         <div class="field full"><label for="f-email">E-posta</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="siz@sirket.com" maxlength="160" required></div>
@@ -270,6 +270,10 @@
           </div>
         </fieldset>
         <div class="field full"><label for="f-msg">Proje özeti</label><textarea id="f-msg" name="message" maxlength="4000" placeholder="Ne yaptırmak istiyorsunuz, yaklaşık ne zaman lazım?"></textarea></div>
+        <div class="field full consent">
+          <label class="check" for="f-consent"><input id="f-consent" name="transfer_consent" type="checkbox" value="yes" required><span>Mesajımın iletilebilmesi için bilgilerimin ABD’deki Formspree, Inc.’e aktarılmasına açık rıza veriyorum. Dilerseniz formu kullanmadan doğrudan e-posta da gönderebilirsiniz.</span></label>
+          <p class="legal-note">Bilgilerinizin nasıl işlendiği: <a href="/tr/kvkk/">KVKK Aydınlatma Metni</a> · <a href="/tr/gizlilik/">Gizlilik Politikası</a></p>
+        </div>
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="skip">
         <div class="form-foot">
           <p class="form-note" id="formNote" role="status">Bilgileriniz yalnızca mesajınıza dönüş yapmak için kullanılır.</p>
@@ -283,10 +287,10 @@
 <footer>
   <div class="wrap">
     <div class="big">Eray<br>Ulusoy<em>.</em></div>
-    <div class="meta"><span class="label">Web Siteleri · Uygulamalar · Bulut</span><a class="plain" href="mailto:contact@erayulusoy.com">contact@erayulusoy.com</a><a class="plain" href="https://www.linkedin.com/in/eray-u-163bb5373" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="plain" href="/" data-lang-link="en">English</a><span>© 2026 Eray Ulusoy</span></div>
+    <div class="meta"><span class="label">Web Siteleri · Uygulamalar · Bulut</span><a class="plain" href="mailto:contact@erayulusoy.com">contact@erayulusoy.com</a><a class="plain" href="https://www.linkedin.com/in/eray-u-163bb5373" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="plain" href="/" data-lang-link="en">English</a><a class="plain" href="/tr/gizlilik/">Gizlilik Politikası</a><a class="plain" href="/tr/kvkk/">KVKK Aydınlatma Metni</a><span>© 2026 Eray Ulusoy</span></div>
   </div>
 </footer>
 
-<script src="../assets/main.js?v=202610220044" defer></script>
+<script src="../assets/main.js?v=202611031650" defer></script>
 </body>
 </html>

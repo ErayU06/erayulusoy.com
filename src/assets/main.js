@@ -126,6 +126,8 @@
     const name = form.elements.name, email = form.elements.email;
     if (!name.value.trim()) { note.textContent = t('msgName'); name.focus(); return; }
     if (!email.validity.valid || !email.value.trim()) { note.textContent = t('msgEmail'); email.focus(); return; }
+    const consent = form.elements.transfer_consent;
+    if (consent && !consent.checked) { note.textContent = t('msgConsent'); consent.focus(); return; }
     const first = name.value.trim().split(/\s+/)[0].slice(0, 40);
     if (!FORMSPREE_ID) { note.textContent = t('msgOffline', first); return; }
     if (form.elements._gotcha && form.elements._gotcha.value) return;

@@ -407,3 +407,33 @@ footer .meta { display: grid; gap: 8px; text-align: right; font-size: 13px; colo
 .progress { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; height: 2px; z-index: 70; pointer-events: none; }
 .progress i { display: block; height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-soft)); transform-origin: left; transform: scaleX(0); box-shadow: 0 0 10px rgba(212,188,138,.45); }
 @media (max-width: 1000px) { .about-side { position: static; } }
+
+/* contact form: consent box and legal links */
+.consent { gap: 10px; }
+.check { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; cursor: pointer; font: 400 14px/1.6 var(--sans); color: var(--ink); letter-spacing: 0; text-transform: none; }
+.field .check { font: 400 14px/1.6 var(--sans); letter-spacing: 0; text-transform: none; color: var(--ink); }
+.check input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--ink); cursor: pointer; }
+.legal-note { font-size: 13px; color: var(--slate-ink); }
+.legal-note a { color: #8A6F3C; }
+footer .meta a.plain:hover { color: var(--ivory); }
+
+/* legal pages */
+.legal-page .nav { background: rgba(15, 22, 38, .96); border-color: var(--hair-dark); }
+.legal { background: var(--ivory); color: var(--ink); padding-block: 160px 120px; }
+.legal article { max-width: 760px; }
+.legal .label a { color: #8A6F3C; }
+.legal h1 { font-size: clamp(38px, 5vw, 60px); line-height: 1.08; margin: 18px 0 28px; }
+.legal .lead { font-size: 18px; font-weight: 300; color: var(--slate-ink); }
+.legal h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.25; margin: 56px 0 16px; padding-top: 24px; border-top: 1px solid var(--hair-light); }
+.legal p + p { margin-top: 14px; }
+.legal ul { margin: 14px 0; padding-left: 20px; }
+.legal li + li { margin-top: 6px; }
+.legal a { color: #8A6F3C; }
+.legal ul.kv { list-style: none; padding: 0; }
+.legal ul.kv li { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding-block: 10px; border-top: 1px solid var(--hair-light); margin: 0; overflow-wrap: anywhere; }
+.legal ul.kv li:last-child { border-bottom: 1px solid var(--hair-light); }
+.legal ul.kv span { font: 600 10px/2.2 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--slate-ink); }
+.legal .see { margin-top: 40px; }
+.legal .updated { margin-top: 56px; font-size: 13px; color: var(--slate-ink); }
+@media (max-width: 1000px) { .legal { padding-block: 120px 88px; } }
+@media (max-width: 600px) { .legal ul.kv li { grid-template-columns: 1fr; gap: 2px; } }

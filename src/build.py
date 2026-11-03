@@ -4,10 +4,12 @@ Usage: python3 src/build.py
 """
 import html, json, os, re, shutil, time
 
+import legal
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(os.path.dirname(ROOT), 'dist')
 LI = 'https://www.linkedin.com/in/eray-u-163bb5373'
-RAW = {'h1_b', 'quote', 'contact_t', 'jsonld', 'brief_lines', 'en_current', 'tr_current'}
+RAW = {'h1_b', 'quote', 'contact_t', 'jsonld', 'brief_lines', 'en_current', 'tr_current', 'consent_l', 'legal_note', 'lead', 'body'}
 
 EN = dict(
     lang='en', url='https://erayulusoy.com/', og_locale='en_US', og_locale_alt='tr_TR',
@@ -203,6 +205,11 @@ EN.update(
     ph_msg='What would you like to build, and roughly when do you need it?',
     ch_web='Website', ch_dev='Application', ch_cloud='Cloud', ch_unsure='Not sure yet',
     footer_tag='Websites · Applications · Cloud',
+    privacy_link='Privacy Policy', kvkk_link='KVKK Notice', updated_label='Last updated',
+    privacy_href=legal.PATHS['en']['privacy'], kvkk_href=legal.PATHS['en']['kvkk'],
+    consent_l='I consent to my details being transferred to Formspree, Inc. in the USA so that this message can be delivered. You can also simply email me instead.',
+    legal_note='How your details are handled: <a href="/kvkk/">KVKK Notice</a> · <a href="/privacy/">Privacy Policy</a>',
+    m_consent='Please tick the consent box, or email contact@erayulusoy.com directly.',
 )
 TR.update(
     consulting='Web ve Yazılım',
@@ -249,6 +256,11 @@ TR.update(
     ph_msg='Ne yaptırmak istiyorsunuz, yaklaşık ne zaman lazım?',
     ch_web='Web sitesi', ch_dev='Uygulama', ch_cloud='Bulut', ch_unsure='Henüz emin değilim',
     footer_tag='Web Siteleri · Uygulamalar · Bulut',
+    privacy_link='Gizlilik Politikası', kvkk_link='KVKK Aydınlatma Metni', updated_label='Son güncelleme',
+    privacy_href=legal.PATHS['tr']['privacy'], kvkk_href=legal.PATHS['tr']['kvkk'],
+    consent_l='Mesajımın iletilebilmesi için bilgilerimin ABD’deki Formspree, Inc.’e aktarılmasına açık rıza veriyorum. Dilerseniz formu kullanmadan doğrudan e-posta da gönderebilirsiniz.',
+    legal_note='Bilgilerinizin nasıl işlendiği: <a href="/tr/kvkk/">KVKK Aydınlatma Metni</a> · <a href="/tr/gizlilik/">Gizlilik Politikası</a>',
+    m_consent='Lütfen açık rıza kutusunu işaretleyin ya da doğrudan contact@erayulusoy.com adresine yazın.',
 )
 
 
@@ -274,15 +286,8 @@ def jsonld(d):
     return json.dumps(data, ensure_ascii=False).replace('</', '<\\/')
 
 
-def render(d, base, home, en_href, tr_href, ver):
-    tpl = open(os.path.join(ROOT, 'template.html'), encoding='utf-8').read()
-    v = dict(d)
-    v['brief_lines'] = json.dumps(d['brief_lines'], ensure_ascii=False).replace('&', '&amp;').replace("'", '&#39;').replace('<', '&lt;')
-    v['jsonld'] = jsonld(d)
-    v.update(base=base, home=home, en_href=en_href, tr_href=tr_href, ver=ver,
-             other_href=tr_href if d['lang'] == 'en' else en_href,
-             en_current=' aria-current="true"' if d['lang'] == 'en' else '',
-             tr_current=' aria-current="true"' if d['lang'] == 'tr' else '')
+def fill(tpl_name, v):
+    tpl = open(os.path.join(ROOT, tpl_name), encoding='utf-8').read()
 
     def sub(m):
         k = m.group(1)
@@ -294,6 +299,32 @@ def render(d, base, home, en_href, tr_href, ver):
     out = re.sub(r'\{\{(\w+)\}\}', sub, tpl)
     assert '{{' not in out
     return out
+
+
+def lang_vars(d, en_href, tr_href):
+    return dict(en_href=en_href, tr_href=tr_href,
+                other_href=tr_href if d['lang'] == 'en' else en_href,
+                en_current=' aria-current="true"' if d['lang'] == 'en' else '',
+                tr_current=' aria-current="true"' if d['lang'] == 'tr' else '')
+
+
+def render(d, base, home, en_href, tr_href, ver):
+    v = dict(d)
+    v['brief_lines'] = json.dumps(d['brief_lines'], ensure_ascii=False).replace('&', '&amp;').replace("'", '&#39;').replace('<', '&lt;')
+    v['jsonld'] = jsonld(d)
+    v.update(base=base, home=home, ver=ver, **lang_vars(d, en_href, tr_href))
+    return fill('template.html', v)
+
+
+def render_legal(d, kind, page, ver):
+    path = legal.PATHS[d['lang']][kind]
+    en_href, tr_href = legal.PATHS['en'][kind], legal.PATHS['tr'][kind]
+    v = dict(d)
+    v.update(page)
+    v.update(base='../' * path.strip('/').count('/') + '../', home='/' if d['lang'] == 'en' else '/tr/', ver=ver,
+             url='https://erayulusoy.com' + path, en_url='https://erayulusoy.com' + en_href, tr_url='https://erayulusoy.com' + tr_href,
+             updated=legal.UPDATED[d['lang']], **lang_vars(d, en_href, tr_href))
+    return path, fill('legal.html', v)
 
 
 def build():
@@ -308,6 +339,13 @@ def build():
     shutil.copy(os.path.join(ROOT, 'security.txt'), os.path.join(DIST, '.well-known', 'security.txt'))
     open(os.path.join(DIST, 'index.html'), 'w', encoding='utf-8').write(render(EN, '', '/', '/', '/tr/', ver))
     open(os.path.join(DIST, 'tr', 'index.html'), 'w', encoding='utf-8').write(render(TR, '../', '/tr/', '/', '/tr/', ver))
+    for (lang, kind), page in legal.pages().items():
+        path, out = render_legal(EN if lang == 'en' else TR, kind, page, ver)
+        os.makedirs(os.path.join(DIST, path.strip('/')), exist_ok=True)
+        open(os.path.join(DIST, path.strip('/'), 'index.html'), 'w', encoding='utf-8').write(out)
+    left = legal.placeholders_left()
+    if left:
+        print('WARNING: fill in legal.CONTROLLER before publishing:', ', '.join(left))
     print('built', ver)
 
 
