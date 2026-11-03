@@ -272,7 +272,7 @@ EN.update(
                       [('intro call', 'free'), ('written scope', 'agreed'), ('build', 'regular previews'), ('launch', 'support after')]),
     f4_b='TR·EN', f4='I work in Turkish and English',
     s2_label='I — Services', s8_label='II — Work', s8_title='Selected work',
-    s8_lead='Projects I have designed and built myself. Each one is live and you can try it.',
+    s8_lead='Products I have built myself, from the app on your phone to the server behind it.',
     s3_label='III — Approach', s4_label='IV — Engagements', s5_label='V — About', s6_label='VI — Principles', s7_label='VII — Contact',
     w_role='My role', w_stack='Built with', w_open='View',
 )
@@ -283,14 +283,23 @@ TR.update(
                       [('tanışma', 'ücretsiz'), ('yazılı kapsam', 'onaylanır'), ('geliştirme', 'düzenli ön izleme'), ('yayın', 'sonrasında destek')]),
     f4_b='TR·EN', f4='Türkçe ve İngilizce çalışırım',
     s2_label='I — Hizmetler', s8_label='II — İşler', s8_title='Seçili işler',
-    s8_lead='Kendi tasarlayıp geliştirdiğim projeler. Hepsi yayında, deneyebilirsiniz.',
+    s8_lead='Telefondaki uygulamadan arkasındaki sunucuya kadar kendim geliştirdiğim ürünler.',
     s3_label='III — Yaklaşım', s4_label='IV — Çalışma şekli', s5_label='V — Hakkımda', s6_label='VI — İlkeler', s7_label='VII — İletişim',
     w_role='Rolüm', w_stack='Teknolojiler', w_open='İncele',
 )
 
 # Real projects only. Each entry: tag, title, text, role, stack, url, link label (per language).
-# TODO(Eray): fill in from real projects before merging.
 PROJECTS = [
+    dict(
+        url='https://apps.apple.com/tr/app/atlas-of-style/id6814677724',
+        stack='React · TypeScript · Hono · tRPC · PostgreSQL · Capacitor · Docker',
+        en=dict(tag='iOS & Android app', title='Atlas of Style', link='App Store',
+                text='A travel and fashion guide: style guides for 19 countries and 23 cities with the best months to travel, packing lists and a fashion timeline from the 1900s to today, in six languages.',
+                role='App and backend: one Capacitor codebase for iOS and Android, an API built with Hono, tRPC and PostgreSQL (Drizzle ORM) with secure sign-in (hashed passwords, JWT sessions), running in Docker on Render.'),
+        tr=dict(tag='iOS ve Android uygulaması', title='Atlas of Style', link='App Store',
+                text='Seyahat ve moda rehberi: 19 ülke ve 23 şehir için stil rehberleri, gitmek için en iyi aylar, bavul listeleri ve 1900’lerden bugüne moda zaman çizelgesi; altı dilde.',
+                role='Uygulama ve sunucu: iOS ve Android için tek Capacitor kod tabanı; Hono, tRPC ve PostgreSQL (Drizzle ORM) ile yazılmış, güvenli girişli (şifrelenmiş parolalar, JWT oturumları) bir API; Docker ile Render üzerinde çalışıyor.'),
+    ),
 ]
 
 

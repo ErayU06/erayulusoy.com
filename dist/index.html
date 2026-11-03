@@ -35,8 +35,8 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preload" href="assets/fonts/playfair-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/style.css?v=202611031648">
-<script src="assets/boot.js?v=202611031648"></script>
+<link rel="stylesheet" href="assets/style.css?v=202611031655">
+<script src="assets/boot.js?v=202611031655"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://erayulusoy.com/#person", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/", "image": "https://erayulusoy.com/og-image.jpg", "jobTitle": "Web Designer & Software Engineer", "email": "mailto:contact@erayulusoy.com", "sameAs": ["https://www.linkedin.com/in/eray-u-163bb5373"], "knowsAbout": ["Web design", "Web development", "Mobile app development", "Business applications", "Cloud computing", "AWS", "SEO"], "knowsLanguage": ["tr", "en"]}, {"@type": "ProfessionalService", "@id": "https://erayulusoy.com/#business", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/", "image": "https://erayulusoy.com/og-image.jpg", "email": "contact@erayulusoy.com", "founder": {"@id": "https://erayulusoy.com/#person"}, "sameAs": ["https://www.linkedin.com/in/eray-u-163bb5373"], "areaServed": "Worldwide", "description": "Eray Ulusoy builds professional, secure websites and business applications for companies and sets up reliable cloud infrastructure on AWS.", "knowsAbout": ["Website design", "Website development", "Mobile app development", "Business software", "Cloud computing"]}, {"@type": "WebSite", "@id": "https://erayulusoy.com/#website", "url": "https://erayulusoy.com/", "name": "Eray Ulusoy", "inLanguage": ["en", "tr"], "publisher": {"@id": "https://erayulusoy.com/#person"}}]}</script>
 </head>
 <body>
@@ -57,6 +57,7 @@
     <a class="mark" href="/">Eray Ulusoy <small>Web &amp; Software</small></a>
     <ul>
       <li><a href="#services">Services</a></li>
+      <!-- work --><li><a href="#work">Work</a></li><!-- /work -->
       <li><a href="#approach">Approach</a></li>
       <li><a href="#engagements">Engagements</a></li>
       <li><a href="#about">About</a></li>
@@ -74,6 +75,7 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu" hidden>
   <a href="#services">Services</a>
+  <!-- work --><a href="#work">Work</a><!-- /work -->
   <a href="#approach">Approach</a>
   <a href="#engagements">Engagements</a>
   <a href="#about">About</a>
@@ -160,6 +162,20 @@
       </div>
     </div>
   </section>
+
+  <!-- work -->
+  <section class="sec work-sec" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="l rv"><div class="label">II — Work</div><h2 id="work-h">Selected work</h2></div>
+        <p class="rv">Products I have built myself, from the app on your phone to the server behind it.</p>
+      </div>
+      <div class="work">
+        <article class="rv"><span class="tag">iOS &amp; Android app</span><h3>Atlas of Style</h3><p>A travel and fashion guide: style guides for 19 countries and 23 cities with the best months to travel, packing lists and a fashion timeline from the 1900s to today, in six languages.</p><dl><div><dt>My role</dt><dd>App and backend: one Capacitor codebase for iOS and Android, an API built with Hono, tRPC and PostgreSQL (Drizzle ORM) with secure sign-in (hashed passwords, JWT sessions), running in Docker on Render.</dd></div><div><dt>Built with</dt><dd>React · TypeScript · Hono · tRPC · PostgreSQL · Capacitor · Docker</dd></div></dl><a class="ulink go" href="https://apps.apple.com/tr/app/atlas-of-style/id6814677724" target="_blank" rel="noopener noreferrer">App Store ↗</a></article>
+      </div>
+    </div>
+  </section>
+  <!-- /work -->
 
   <section class="sec paper" id="approach" aria-labelledby="approach-h">
     <div class="wrap">
@@ -282,6 +298,6 @@
   </div>
 </footer>
 
-<script src="assets/main.js?v=202611031648" defer></script>
+<script src="assets/main.js?v=202611031655" defer></script>
 </body>
 </html>
