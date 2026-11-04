@@ -291,7 +291,7 @@ TR.update(
 # Real projects only. Each entry: tag, title, text, role, stack, url, link label (per language).
 PROJECTS = [
     dict(
-        url='https://apps.apple.com/tr/app/atlas-of-style/id6814677724',
+        url='https://apps.apple.com/tr/app/atlas-of-style/id6814677724', icon='atlas-of-style.png',
         stack='React · TypeScript · Hono · tRPC · PostgreSQL · Capacitor · Docker',
         en=dict(tag='iOS & Android app', title='Atlas of Style', link='App Store',
                 text='A travel and fashion guide: style guides for 19 countries and 23 cities with the best months to travel, packing lists and a fashion timeline from the 1900s to today, in six languages.',
@@ -308,14 +308,15 @@ def work_items(lang):
     items = []
     for p in PROJECTS:
         t = p[lang]
-        img = ''
-        if p.get('img'):
-            img = f'<img src="{{{{base}}}}assets/work/{esc(p["img"])}" alt="{esc(t["alt"])}" width="{p["w"]}" height="{p["h"]}" loading="lazy" decoding="async">'
-        link = ''
+        link = icon = ''
         if p.get('url'):
             link = f'<a class="ulink go" href="{esc(p["url"])}" target="_blank" rel="noopener noreferrer">{esc(t["link"])} ↗</a>'
+        if p.get('icon'):
+            # the app's own icon, linking to its store page
+            icon = (f'<a class="w-icon" href="{esc(p["url"])}" target="_blank" rel="noopener noreferrer">'
+                    f'<img src="{{{{base}}}}assets/work/{esc(p["icon"])}" alt="{esc(t["title"])} · {esc(t["link"])}" width="72" height="72" loading="lazy" decoding="async"></a>')
         items.append(
-            f'<article class="rv">{img}<span class="tag">{esc(t["tag"])}</span><h3>{esc(t["title"])}</h3><p>{esc(t["text"])}</p>'
+            f'<article class="rv"><div class="w-head">{icon}<div><span class="tag">{esc(t["tag"])}</span><h3>{esc(t["title"])}</h3></div></div><p>{esc(t["text"])}</p>'
             f'<dl><div><dt>{{{{w_role}}}}</dt><dd>{esc(t["role"])}</dd></div><div><dt>{{{{w_stack}}}}</dt><dd>{esc(p["stack"])}</dd></div></dl>{link}</article>')
     return '\n        '.join(items)
 

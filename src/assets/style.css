@@ -237,7 +237,12 @@ section.sec { padding-block: 140px; }
 .work article { padding: 44px 36px 48px; border-right: 1px solid var(--hair-dark); display: grid; gap: 20px; align-content: start; min-width: 0; }
 .work article:first-child { padding-left: 0; }
 .work article:last-child { border-right: 0; }
-.work img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border: 1px solid var(--hair-dark); }
+.work .w-head { display: flex; align-items: center; gap: 20px; }
+.work .w-head > div { display: grid; gap: 12px; }
+.work .w-icon { flex: none; display: block; width: 72px; height: 72px; border-radius: 16px; transition: transform .6s var(--ease); }
+.work .w-icon:hover { transform: translateY(-2px); }
+.work .w-icon:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
+.work .w-icon img { display: block; width: 100%; height: 100%; }
 .work .tag { justify-self: start; font: 600 10px var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--hair-gold); padding: 6px 10px; }
 .work h3 { font-size: 28px; line-height: 1.2; }
 .work p { color: rgba(245,241,232,.72); font-weight: 300; }
