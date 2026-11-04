@@ -35,8 +35,8 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preload" href="assets/fonts/playfair-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/style.css?v=202611041617">
-<script src="assets/boot.js?v=202611041617"></script>
+<link rel="stylesheet" href="assets/style.css?v=202611041623">
+<script src="assets/boot.js?v=202611041623"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://erayulusoy.com/#person", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/", "image": "https://erayulusoy.com/og-image.jpg", "jobTitle": "Web Designer & Software Engineer", "email": "mailto:contact@erayulusoy.com", "sameAs": ["https://www.linkedin.com/in/eray-u-163bb5373"], "knowsAbout": ["Web design", "Web development", "Mobile app development", "Business applications", "Cloud computing", "AWS", "SEO"], "knowsLanguage": ["tr", "en"]}, {"@type": "ProfessionalService", "@id": "https://erayulusoy.com/#business", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/", "image": "https://erayulusoy.com/og-image.jpg", "email": "contact@erayulusoy.com", "founder": {"@id": "https://erayulusoy.com/#person"}, "sameAs": ["https://www.linkedin.com/in/eray-u-163bb5373"], "areaServed": "Worldwide", "description": "Eray Ulusoy builds professional, secure websites and business applications for companies and sets up reliable cloud infrastructure on AWS.", "knowsAbout": ["Website design", "Website development", "Mobile app development", "Business software", "Cloud computing"]}, {"@type": "WebSite", "@id": "https://erayulusoy.com/#website", "url": "https://erayulusoy.com/", "name": "Eray Ulusoy", "inLanguage": ["en", "tr"], "publisher": {"@id": "https://erayulusoy.com/#person"}}]}</script>
 </head>
 <body>
@@ -159,11 +159,21 @@
         </article>
       </div>
       <div class="work rv" id="work">
-        <div class="work-head"><div class="label">Published work</div><h3>Apps I have designed and built</h3></div>
+        <div class="work-head"><div class="label">Published work</div><h3>A few of the apps I have designed and built</h3></div>
         <div class="apps">
           <article class="app">
             <img src="assets/app-atlas-of-style.png" alt="Atlas of Style app icon" width="120" height="120" loading="lazy" decoding="async">
-            <div><b>Atlas of Style</b><small>iOS app</small><span class="app-status">Available on the App Store</span></div>
+            <div class="app-body">
+              <div class="app-title"><b>Atlas of Style</b><span class="app-status">On the App Store</span></div>
+              <small>Travel and fashion guide · iOS</small>
+              <p>Style guides for 19 countries and 23 cities, with the best months to travel, packing lists and a fashion timeline from the 1900s to today, in six languages.</p>
+              <ul><li>Backend built with Hono, tRPC and PostgreSQL (Drizzle ORM), with secure sign-in using hashed passwords and JWT sessions</li><li>One codebase for iOS and Android with Capacitor; the backend runs in Docker on Render</li></ul>
+              <div class="app-tags"><span>React</span><span>TypeScript</span><span>Hono</span><span>tRPC</span><span>PostgreSQL</span><span>Capacitor</span><span>Docker</span></div>
+              <div class="app-links">
+                <a class="app-link" href="https://apps.apple.com/app/atlas-of-style/id6814677724" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8ZM14.1 5.8c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3Z"/></svg>View on the App Store <span aria-hidden="true">↗</span></a>
+                <a class="app-link ghost" href="https://github.com/ErayU06/Atlas_Of_Style" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 2.9.8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 4.9.4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg>GitHub <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
           </article>
         </div>
       </div>
@@ -296,6 +306,6 @@
   </div>
 </footer>
 
-<script src="assets/main.js?v=202611041617" defer></script>
+<script src="assets/main.js?v=202611041623" defer></script>
 </body>
 </html>

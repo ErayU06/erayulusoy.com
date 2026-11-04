@@ -159,8 +159,12 @@ TR.update(
 
 # ---- Repositioning: websites, business applications and cloud (no cybersecurity service) ----
 EN.update(
-    w_label='Published work', w_title='Apps I have designed and built', app_alt='Atlas of Style app icon',
-    app_platform='iOS app', app_live='Available on the App Store',
+    w_label='Published work', w_title='A few of the apps I have designed and built', app_alt='Atlas of Style app icon',
+    app_live='On the App Store', app_tagline='Travel and fashion guide · iOS',
+    app_desc='Style guides for 19 countries and 23 cities, with the best months to travel, packing lists and a fashion timeline from the 1900s to today, in six languages.',
+    app_f1='Backend built with Hono, tRPC and PostgreSQL (Drizzle ORM), with secure sign-in using hashed passwords and JWT sessions',
+    app_f2='One codebase for iOS and Android with Capacitor; the backend runs in Docker on Render',
+    app_store_url='https://apps.apple.com/app/atlas-of-style/id6814677724', app_store_label='View on the App Store',
     consulting='Web &amp; Software',
     meta_title='Eray Ulusoy | Web Design, Business Apps & Cloud',
     meta_desc='Eray Ulusoy builds professional, secure websites and business applications for companies and sets up reliable cloud infrastructure on AWS.',
@@ -207,8 +211,12 @@ EN.update(
     footer_tag='Websites · Applications · Cloud',
 )
 TR.update(
-    w_label='Yayınlanan işler', w_title='Tasarlayıp geliştirdiğim uygulamalar', app_alt='Atlas of Style uygulama ikonu',
-    app_platform='iOS uygulaması', app_live='App Store’da yayında',
+    w_label='Yayınlanan işler', w_title='Tasarlayıp geliştirdiğim uygulamalardan bazıları', app_alt='Atlas of Style uygulama ikonu',
+    app_live='App Store’da', app_tagline='Seyahat ve moda rehberi · iOS',
+    app_desc='19 ülke ve 23 şehir için stil rehberleri; seyahat için en iyi aylar, bavul listeleri ve 1900’lerden bugüne moda zaman çizelgesi. Altı dilde.',
+    app_f1='Hono, tRPC ve PostgreSQL (Drizzle ORM) ile geliştirilen sunucu; hash’lenmiş parolalar ve JWT oturumlarıyla güvenli giriş',
+    app_f2='Capacitor ile iOS ve Android için tek kod tabanı; sunucu Render üzerinde Docker’da çalışıyor',
+    app_store_url='https://apps.apple.com/tr/app/atlas-of-style/id6814677724?l=tr', app_store_label='App Store’da görüntüle',
     consulting='Web ve Yazılım',
     meta_title='Eray Ulusoy | Web Sitesi Tasarımı, Uygulama Geliştirme ve Bulut',
     meta_desc='Eray Ulusoy; işletmelere ve şirketlere güvenli ve profesyonel web sitesi tasarımı, web ve mobil uygulama geliştirme ve AWS bulut bilişim hizmetleri sunar.',
