@@ -6,7 +6,7 @@ import html, json, os, re, shutil, time
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(os.path.dirname(ROOT), 'dist')
-LI = 'https://www.linkedin.com/in/eray-u-163bb5373'
+LI = 'https://www.linkedin.com/in/eray-ulusoy'
 RAW = {'h1_b', 'quote', 'contact_t', 'jsonld', 'brief_lines', 'en_current', 'tr_current'}
 
 EN = dict(
