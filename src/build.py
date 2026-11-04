@@ -159,6 +159,8 @@ TR.update(
 
 # ---- Repositioning: websites, business applications and cloud (no cybersecurity service) ----
 EN.update(
+    w_label='Published work', w_title='Apps I have designed and built', app_alt='Atlas of Style app icon',
+    app_platform='iOS app', app_live='Available on the App Store',
     consulting='Web &amp; Software',
     meta_title='Eray Ulusoy | Web Design, Business Apps & Cloud',
     meta_desc='Eray Ulusoy builds professional, secure websites and business applications for companies and sets up reliable cloud infrastructure on AWS.',
@@ -205,6 +207,8 @@ EN.update(
     footer_tag='Websites · Applications · Cloud',
 )
 TR.update(
+    w_label='Yayınlanan işler', w_title='Tasarlayıp geliştirdiğim uygulamalar', app_alt='Atlas of Style uygulama ikonu',
+    app_platform='iOS uygulaması', app_live='App Store’da yayında',
     consulting='Web ve Yazılım',
     meta_title='Eray Ulusoy | Web Sitesi Tasarımı, Uygulama Geliştirme ve Bulut',
     meta_desc='Eray Ulusoy; işletmelere ve şirketlere güvenli ve profesyonel web sitesi tasarımı, web ve mobil uygulama geliştirme ve AWS bulut bilişim hizmetleri sunar.',

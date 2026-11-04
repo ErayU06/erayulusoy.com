@@ -407,3 +407,17 @@ footer .meta { display: grid; gap: 8px; text-align: right; font-size: 13px; colo
 .progress { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; height: 2px; z-index: 70; pointer-events: none; }
 .progress i { display: block; height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-soft)); transform-origin: left; transform: scaleX(0); box-shadow: 0 0 10px rgba(212,188,138,.45); }
 @media (max-width: 1000px) { .about-side { position: static; } }
+
+/* published apps */
+.work { margin-top: 88px; display: grid; grid-template-columns: 4fr 8fr; gap: 64px; align-items: center; }
+.work-head { display: grid; gap: 14px; }
+.work-head h3 { font-size: clamp(26px, 2.6vw, 34px); line-height: 1.15; }
+.apps { display: flex; flex-wrap: wrap; gap: 20px; }
+.app { display: flex; align-items: center; gap: 20px; padding: 18px 30px 18px 18px; border: 1px solid var(--hair-gold); background: rgba(245,241,232,.02); transition: border-color .6s var(--ease), transform .6s var(--ease), background .6s var(--ease); }
+.app:hover { border-color: var(--gold); background: rgba(184,155,100,.05); transform: translateY(-3px); }
+.app img { width: 76px; height: 76px; flex: none; filter: drop-shadow(0 10px 18px rgba(0,0,0,.35)); }
+.app b { display: block; font: 400 26px/1.15 var(--serif); color: var(--ivory); }
+.app small { display: block; margin-top: 4px; font-size: 13px; color: var(--slate); }
+.app-status { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; font: 600 10px var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.app-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+@media (max-width: 1000px) { .work { grid-template-columns: 1fr; gap: 28px; margin-top: 64px; } }
