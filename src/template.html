@@ -57,6 +57,7 @@
     <a class="mark" href="{{home}}">Eray Ulusoy <small>{{consulting}}</small></a>
     <ul>
       <li><a href="#services">{{n_services}}</a></li>
+      <!-- work --><li><a href="#work">{{n_work}}</a></li><!-- /work -->
       <li><a href="#approach">{{n_approach}}</a></li>
       <li><a href="#engagements">{{n_engagements}}</a></li>
       <li><a href="#about">{{n_about}}</a></li>
@@ -74,6 +75,7 @@
 </nav>
 <div class="mobile-menu" id="mobileMenu" hidden>
   <a href="#services">{{n_services}}</a>
+  <!-- work --><a href="#work">{{n_work}}</a><!-- /work -->
   <a href="#approach">{{n_approach}}</a>
   <a href="#engagements">{{n_engagements}}</a>
   <a href="#about">{{n_about}}</a>
@@ -109,7 +111,7 @@
     <div class="fact"><b>4<sup>+</sup></b><span>{{f1}}</span></div>
     <div class="fact"><b>3</b><span>{{f2}}</span></div>
     <div class="fact"><b>1:1</b><span>{{f3}}</span></div>
-    <div class="fact"><b>AWS</b><span>{{f4}}</span></div>
+    <div class="fact"><b>{{f4_b}}</b><span>{{f4}}</span></div>
   </div>
 </div>
 
@@ -160,6 +162,20 @@
       </div>
     </div>
   </section>
+
+  <!-- work -->
+  <section class="sec work-sec" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="l rv"><div class="label">{{s8_label}}</div><h2 id="work-h">{{s8_title}}</h2></div>
+        <p class="rv">{{s8_lead}}</p>
+      </div>
+      <div class="work">
+        {{work_items}}
+      </div>
+    </div>
+  </section>
+  <!-- /work -->
 
   <section class="sec paper" id="approach" aria-labelledby="approach-h">
     <div class="wrap">
@@ -217,11 +233,6 @@
         <p class="rv">{{about_p}}</p>
         <div class="about-actions rv">
           <a class="li-btn" href="https://www.linkedin.com/in/eray-u-163bb5373" target="_blank" rel="noopener noreferrer"><span class="li-logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 8.4H1.8V22h3.6V8.4ZM3.6 2a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2ZM22.2 14.2c0-3.6-1.9-6.1-5.3-6.1-1.7 0-2.9.9-3.4 1.8V8.4H10V22h3.6v-7.1c0-1.8.6-3.1 2.4-3.1 1.9 0 2.5 1.6 2.5 3.3V22h3.7v-7.8Z"/></svg></span>{{li_view}}</a>
-        </div>
-        <div class="creds rv">
-          <div class="label">{{cert_track}}</div>
-          <div class="cred"><div><b>AWS Certified Cloud Practitioner</b><small>{{c1}}</small></div><span class="st now">{{inprog}}</span></div>
-          <div class="cred"><div><b>AWS Certified Solutions Architect – Associate</b><small>{{c2}}</small></div><span class="st">{{planned}}</span></div>
         </div>
       </div>
     </div>

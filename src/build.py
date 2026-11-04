@@ -252,6 +252,75 @@ TR.update(
 )
 
 
+# ---- Proof over promises: real work, honest hero, certificates de-emphasised ----
+def brief(rows, tail):
+    """Hero terminal: key/value rows, then '› step ..... state' rows (last state is dimmed)."""
+    out = []
+    for k, v in rows:
+        out += [['s', k.ljust(11)], ['', v + '\n']]
+    out[-1][1] += '\n'
+    for i, (k, v) in enumerate(tail):
+        last = i == len(tail) - 1
+        out += [['g', '› '], ['', (k + ' ').ljust(24, '.') + ' '], ['s' if last else 'g', v + ('' if last else '\n')]]
+    return out
+
+
+EN.update(
+    n_work='Work',
+    brief_label='How a project runs', brief_title='How a project runs', brief_status='every project',
+    brief_lines=brief([('scope', 'Website · App · Cloud'), ('price', 'Fixed, agreed in writing'), ('contact', 'Directly with me')],
+                      [('intro call', 'free'), ('written scope', 'agreed'), ('build', 'regular previews'), ('launch', 'support after')]),
+    f4_b='TR·EN', f4='I work in Turkish and English',
+    s2_label='I — Services', s8_label='II — Work', s8_title='Selected work',
+    s8_lead='Products I have built myself, from the app on your phone to the server behind it.',
+    s3_label='III — Approach', s4_label='IV — Engagements', s5_label='V — About', s6_label='VI — Principles', s7_label='VII — Contact',
+    w_role='My role', w_stack='Built with', w_open='View',
+)
+TR.update(
+    n_work='İşler',
+    brief_label='Bir proje nasıl ilerler', brief_title='Proje süreci', brief_status='her projede',
+    brief_lines=brief([('kapsam', 'Web · Uygulama · Bulut'), ('fiyat', 'Sabit, yazılı olarak'), ('iletişim', 'Doğrudan benimle')],
+                      [('tanışma', 'ücretsiz'), ('yazılı kapsam', 'onaylanır'), ('geliştirme', 'düzenli ön izleme'), ('yayın', 'sonrasında destek')]),
+    f4_b='TR·EN', f4='Türkçe ve İngilizce çalışırım',
+    s2_label='I — Hizmetler', s8_label='II — İşler', s8_title='Seçili işler',
+    s8_lead='Telefondaki uygulamadan arkasındaki sunucuya kadar kendim geliştirdiğim ürünler.',
+    s3_label='III — Yaklaşım', s4_label='IV — Çalışma şekli', s5_label='V — Hakkımda', s6_label='VI — İlkeler', s7_label='VII — İletişim',
+    w_role='Rolüm', w_stack='Teknolojiler', w_open='İncele',
+)
+
+# Real projects only. Each entry: tag, title, text, role, stack, url, link label (per language).
+PROJECTS = [
+    dict(
+        url='https://apps.apple.com/tr/app/atlas-of-style/id6814677724', icon='atlas-of-style.png',
+        stack='React · TypeScript · Hono · tRPC · PostgreSQL · Capacitor · Docker',
+        en=dict(tag='iOS & Android app', title='Atlas of Style', link='App Store',
+                text='A travel and fashion guide: style guides for 19 countries and 23 cities with the best months to travel, packing lists and a fashion timeline from the 1900s to today, in six languages.',
+                role='App and backend: one Capacitor codebase for iOS and Android, an API built with Hono, tRPC and PostgreSQL (Drizzle ORM) with secure sign-in (hashed passwords, JWT sessions), running in Docker on Render.'),
+        tr=dict(tag='iOS ve Android uygulaması', title='Atlas of Style', link='App Store',
+                text='Seyahat ve moda rehberi: 19 ülke ve 23 şehir için stil rehberleri, gitmek için en iyi aylar, bavul listeleri ve 1900’lerden bugüne moda zaman çizelgesi; altı dilde.',
+                role='Uygulama ve sunucu: iOS ve Android için tek Capacitor kod tabanı; Hono, tRPC ve PostgreSQL (Drizzle ORM) ile yazılmış, güvenli girişli (şifrelenmiş parolalar, JWT oturumları) bir API; Docker ile Render üzerinde çalışıyor.'),
+    ),
+]
+
+
+def work_items(lang):
+    esc = lambda s: html.escape(s, quote=True)
+    items = []
+    for p in PROJECTS:
+        t = p[lang]
+        link = icon = ''
+        if p.get('url'):
+            link = f'<a class="ulink go" href="{esc(p["url"])}" target="_blank" rel="noopener noreferrer">{esc(t["link"])} ↗</a>'
+        if p.get('icon'):
+            # the app's own icon, linking to its store page
+            icon = (f'<a class="w-icon" href="{esc(p["url"])}" target="_blank" rel="noopener noreferrer">'
+                    f'<img src="{{{{base}}}}assets/work/{esc(p["icon"])}" alt="{esc(t["title"])} · {esc(t["link"])}" width="72" height="72" loading="lazy" decoding="async"></a>')
+        items.append(
+            f'<article class="rv"><div class="w-head">{icon}<div><span class="tag">{esc(t["tag"])}</span><h3>{esc(t["title"])}</h3></div></div><p>{esc(t["text"])}</p>'
+            f'<dl><div><dt>{{{{w_role}}}}</dt><dd>{esc(t["role"])}</dd></div><div><dt>{{{{w_stack}}}}</dt><dd>{esc(p["stack"])}</dd></div></dl>{link}</article>')
+    return '\n        '.join(items)
+
+
 def jsonld(d):
     data = {
         '@context': 'https://schema.org',
@@ -283,6 +352,11 @@ def render(d, base, home, en_href, tr_href, ver):
              other_href=tr_href if d['lang'] == 'en' else en_href,
              en_current=' aria-current="true"' if d['lang'] == 'en' else '',
              tr_current=' aria-current="true"' if d['lang'] == 'tr' else '')
+
+    if PROJECTS:
+        tpl = tpl.replace('{{work_items}}', work_items(d['lang']))
+    else:  # no real projects yet: leave the section and its nav links out entirely
+        tpl = re.sub(r'\s*<!-- work -->.*?<!-- /work -->', '', tpl, flags=re.S)
 
     def sub(m):
         k = m.group(1)
