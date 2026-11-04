@@ -445,3 +445,13 @@ footer .meta { display: grid; gap: 8px; text-align: right; font-size: 13px; colo
 .js .sig.in .sig-line { transform: scaleX(1); }
 .sig small { font: 600 11px var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--slate-ink); }
 @media (prefers-reduced-motion: reduce) { .js .sig .sig-line { transform: none; } }
+
+/* additional expertise */
+.also { margin-top: 56px; display: grid; grid-template-columns: 4fr 8fr; gap: 18px 64px; align-items: start; }
+.also > .label { padding-top: 14px; }
+.also .label { grid-row: span 2; }
+.also-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.also-tags span { font-size: 14px; color: var(--ivory); padding: 9px 16px; border: 1px solid var(--hair-gold); transition: border-color .5s var(--ease), background .5s var(--ease); }
+.also-tags span:hover { border-color: var(--gold); background: rgba(184,155,100,.06); }
+.also p { font: italic 400 17px var(--serif); color: var(--slate); }
+@media (max-width: 1000px) { .also { grid-template-columns: 1fr; } .also .label { grid-row: auto; } }

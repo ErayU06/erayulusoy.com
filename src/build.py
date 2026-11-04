@@ -159,6 +159,8 @@ TR.update(
 
 # ---- Repositioning: websites, business applications and cloud (no cybersecurity service) ----
 EN.update(
+    also_label='Also experienced in', also_1='E-commerce sites', also_2='SEO and Google visibility', also_3='Social media setup and management', also_4='Domains, business email and hosting',
+    also_note='…and the everyday technical needs of a growing business.',
     w_label='Published work', w_title='A few of the apps I have designed and built', app_alt='Atlas of Style app icon',
     app_live='On the App Store', app_tagline='Travel and fashion guide · iOS',
     app_desc='Style guides for 19 countries and 23 cities, with the best months to travel, packing lists and a fashion timeline from the 1900s to today, in six languages.',
@@ -176,7 +178,7 @@ EN.update(
     brief_lines=[['s', 'client     '], ['', 'Retail company\n'], ['s', 'scope      '], ['', 'Website · Order app\n'], ['s', 'hosting    '], ['', 'AWS · Cloudflare\n\n'],
                  ['g', '› '], ['', 'design ................. '], ['g', 'approved\n'], ['g', '› '], ['', 'website ................ '], ['g', 'live\n'],
                  ['g', '› '], ['', 'mobile app ............. '], ['', 'in testing\n'], ['g', '› '], ['', 'cloud setup ............ '], ['s', 'deploying']],
-    f1='Years building software', f2='Services under one roof', f3='You work directly with me', f4='Certification track in progress',
+    f1='Years building software', f2='Services under one roof', f3='You work directly with me', f4='Cloud hosting and infrastructure',
     quote='I help companies look professional online and work more efficiently, <em>with websites and applications built to last.</em>',
     role='Web Designer &amp; Software Engineer',
     s2_label='I — Services', s2_title='Websites, applications and cloud',
@@ -201,7 +203,7 @@ EN.update(
     e3_len='1 – 4 weeks', e3_rec='Cloud setup, backups and an optional monthly care plan',
     about_t='Built to look good. Built to be secure.',
     about_lead='For the past four years I have been building websites and software. Today I help businesses with their whole online presence: the website customers see, the applications teams use every day and the cloud infrastructure behind them. Every project is built securely from the start, with protected data, safe sign-in and encrypted connections, rather than patched afterwards.',
-    about_p='I work independently under my own name, which means every client works with me directly, from the first conversation to launch and beyond. I am currently deepening my cloud expertise through the AWS certification track.',
+    about_p='I work independently under my own name, which means every client works with me directly, from the first conversation to launch and beyond. I host, deploy and maintain the projects I build on AWS and Cloudflare, so the same person who builds your site also keeps it fast and online.',
     c1='Cloud concepts, core services, pricing', c2='Reliable and scalable architecture design',
     p1_t='Security by design', p1_p='Every website and application is built with security best practices from the first line of code: encrypted connections, protected data and safe logins.',
     p2_t='Quality', p2_p='Clean design, fast pages, a clear scope and well-built code that keeps working long after launch.',
@@ -211,6 +213,8 @@ EN.update(
     footer_tag='Websites · Applications · Cloud',
 )
 TR.update(
+    also_label='Ayrıca deneyimli olduğum alanlar', also_1='E-ticaret siteleri', also_2='SEO ve Google’da görünürlük', also_3='Sosyal medya kurulumu ve yönetimi', also_4='Alan adı, kurumsal e-posta ve barındırma',
+    also_note='…ve büyüyen bir işletmenin günlük teknik ihtiyaçları.',
     w_label='Yayınlanan işler', w_title='Tasarlayıp geliştirdiğim uygulamalardan bazıları', app_alt='Atlas of Style uygulama ikonu',
     app_live='App Store’da', app_tagline='Seyahat ve moda rehberi · iOS',
     app_desc='19 ülke ve 23 şehir için stil rehberleri; seyahat için en iyi aylar, bavul listeleri ve 1900’lerden bugüne moda zaman çizelgesi. Altı dilde.',
@@ -228,7 +232,7 @@ TR.update(
     brief_lines=[['s', 'müşteri    '], ['', 'Perakende şirketi\n'], ['s', 'kapsam     '], ['', 'Web sitesi · Sipariş uygulaması\n'], ['s', 'altyapı    '], ['', 'AWS · Cloudflare\n\n'],
                  ['g', '› '], ['', 'tasarım ................ '], ['g', 'onaylandı\n'], ['g', '› '], ['', 'web sitesi ............. '], ['g', 'yayında\n'],
                  ['g', '› '], ['', 'mobil uygulama ......... '], ['', 'testte\n'], ['g', '› '], ['', 'bulut kurulumu ......... '], ['s', 'yükleniyor']],
-    f1='Yıllık yazılım deneyimi', f2='Tek çatı altında üç hizmet', f3='Doğrudan benimle çalışırsınız', f4='Sertifika süreci devam ediyor',
+    f1='Yıllık yazılım deneyimi', f2='Tek çatı altında üç hizmet', f3='Doğrudan benimle çalışırsınız', f4='Bulut altyapısı ve barındırma',
     quote='Şirketlerin internette profesyonel görünmesine ve daha verimli çalışmasına yardımcı oluyorum, <em>uzun ömürlü web siteleri ve uygulamalarla.</em>',
     role='Web Tasarımcı ve Yazılım Mühendisi',
     s2_label='I — Hizmetler', s2_title='Web siteleri, uygulamalar ve bulut',
@@ -253,7 +257,7 @@ TR.update(
     e3_len='1 – 4 hafta', e3_rec='Bulut kurulumu, yedekleme ve isteğe bağlı aylık bakım planı',
     about_t='Hem şık hem güvenli.',
     about_lead='Son dört yıldır web siteleri ve yazılımlar geliştiriyorum. Bugün işletmelerin internetteki varlığının tamamında yardımcı oluyorum: müşterilerin gördüğü web sitesi, ekiplerin her gün kullandığı uygulamalar ve bunların arkasındaki bulut altyapısı. Her proje en baştan güvenli şekilde geliştirilir; veriler korunur, girişler güvenlidir, bağlantılar şifrelidir. Güvenlik sonradan eklenmez.',
-    about_p='Kendi adımla bağımsız çalışıyorum; yani her müşteri ilk görüşmeden yayına ve sonrasına kadar doğrudan benimle çalışıyor. Şu anda AWS sertifika süreciyle bulut alanındaki uzmanlığımı derinleştiriyorum.',
+    about_p='Kendi adımla bağımsız çalışıyorum; yani her müşteri ilk görüşmeden yayına ve sonrasına kadar doğrudan benimle çalışıyor. Geliştirdiğim projeleri AWS ve Cloudflare üzerinde barındırıyor, yayına alıyor ve bakımını yapıyorum; sitenizi yapan kişi, onu hızlı ve ayakta tutan kişidir.',
     c1='Bulut kavramları, temel servisler, fiyatlandırma', c2='Güvenilir ve ölçeklenebilir mimari tasarımı',
     p1_t='Baştan güvenli', p1_p='Her web sitesi ve uygulama ilk satır koddan itibaren güvenlik standartlarına göre geliştirilir: şifreli bağlantılar, korunan veriler ve güvenli girişler.',
     p2_t='Kalite', p2_p='Temiz tasarım, hızlı sayfalar, net kapsam ve yayından çok sonra da sorunsuz çalışan, özenle yazılmış kod.',
