@@ -56,38 +56,38 @@
       if (x < -20 || x > W + 20 || y < -20 || y > H + 20) return;
       const r = Math.random();
       const c = o.c != null ? o.c : r < .5 ? 0 : r < .68 ? 1 : r < .88 ? 2 : 3;
-      P.push({ hx: x, hy: y, x, y, vx: 0, vy: 0, c, a: o.a != null ? o.a : rnd(.25, .85), s: o.s || (Math.random() < .12 ? 1.6 : 1),
+      P.push({ hx: x, hy: y, x, y, vx: 0, vy: 0, c, a: o.a != null ? o.a : rnd(.25, .85), s: o.s || (Math.random() < .18 ? 1.7 : 1.15),
         ph: Math.random() * 6.283, sp: rnd(.2, .7), amp: rnd(.6, 3) });
     };
     const build = () => {
       P = [];
       const mobile = W < 700;
       const k = Math.min(1.25, (W * H) / (1440 * 900));
-      const dust = Math.round((mobile ? 1800 : 4400) * Math.max(.45, k));
+      const dust = Math.round((mobile ? 4200 : 10500) * Math.max(.5, k));
       /* dust: heavier toward the right, in soft clumps */
-      const clumps = Array.from({ length: mobile ? 6 : 10 }, () => ({ x: W * rnd(mobile ? .1 : .42, 1.02), y: H * rnd(-.05, 1.05), r: rnd(90, 260) }));
+      const clumps = Array.from({ length: mobile ? 8 : 16 }, () => ({ x: W * rnd(mobile ? .05 : .36, 1.02), y: H * rnd(-.05, 1.05), r: rnd(80, 240) }));
       for (let i = 0; i < dust; i++) {
-        if (Math.random() < .62) { const c = clumps[i % clumps.length]; add(c.x + gauss() * c.r * 1.6, c.y + gauss() * c.r, {}); }
-        else add(W * Math.pow(Math.random(), .55), H * Math.random(), { a: rnd(.2, .6) });
+        if (Math.random() < .66) { const c = clumps[i % clumps.length]; add(c.x + gauss() * c.r * 1.6, c.y + gauss() * c.r, { a: rnd(.35, 1) }); }
+        else add(W * Math.pow(Math.random(), .45), H * Math.random(), { a: rnd(.25, .75) });
       }
       /* long faint arcs sweeping across */
       const arcs = mobile ? [[W * 1.05, -H * .1, W * .8]] : [[W * .98, -H * .2, W * .42], [W * 1.08, H * .55, W * .3], [-W * .2, H * 1.6, W * .78]];
       arcs.forEach(([cx, cy, R], j) => {
-        const n = Math.round(R * 2.2);
+        const n = Math.round(R * 4.5);
         for (let i = 0; i < n; i++) { const th = Math.random() * 6.283, rr = R + gauss() * 7; add(cx + Math.cos(th) * rr, cy + Math.sin(th) * rr, { c: j === 1 ? 2 : 0, a: rnd(.3, .8) }); }
       });
       /* small bright loops scattered in the cloud */
-      const loops = mobile ? 4 : 9;
+      const loops = mobile ? 7 : 18;
       for (let l = 0; l < loops; l++) {
         const cx = W * rnd(mobile ? .15 : .45, .97), cy = H * rnd(.2, .92), rx = rnd(8, 34), ry = rx * rnd(.35, 1), rot = Math.random() * 3.14;
-        const n = Math.round(rx * 4.5);
+        const n = Math.round(rx * 6);
         for (let i = 0; i < n; i++) {
           const th = (i / n) * 6.283, ex = Math.cos(th) * rx + gauss() * 1.2, ey = Math.sin(th) * ry + gauss() * 1.2;
           add(cx + ex * Math.cos(rot) - ey * Math.sin(rot), cy + ex * Math.sin(rot) + ey * Math.cos(rot), { c: 0, a: rnd(.75, 1), s: 1.5 });
         }
       }
       /* short curved strokes, like threads */
-      for (let l = 0; l < (mobile ? 5 : 12); l++) {
+      for (let l = 0; l < (mobile ? 10 : 26); l++) {
         let x = W * rnd(mobile ? .1 : .45, 1), y = H * Math.random(), ang = Math.random() * 6.283;
         const len = rnd(30, 110), turn = rnd(-.04, .04);
         for (let i = 0; i < len; i += 1.4) { x += Math.cos(ang) * 1.4; y += Math.sin(ang) * 1.4; ang += turn; add(x + gauss(), y + gauss(), { c: Math.random() < .7 ? 0 : 2, a: rnd(.5, .9), s: 1.3 }); }
@@ -98,7 +98,7 @@
       W = r.width; H = r.height; canvas.width = W * d; canvas.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
       build();
     };
-    const R = 130, R2 = R * R, G2 = (R * 1.6) * (R * 1.6), LV = 10;
+    const R = 150, R2 = R * R, G2 = (R * 1.6) * (R * 1.6), LV = 10;
     const STYLES = COLORS.map(c => Array.from({ length: LV + 1 }, (_, i) => `rgba(${c},${(i / LV).toFixed(2)})`));
     const buckets = Array.from({ length: COLORS.length * (LV + 1) }, () => []);
     const frame = () => {
