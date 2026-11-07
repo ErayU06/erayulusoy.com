@@ -104,6 +104,109 @@
     });
   } else document.querySelectorAll('.rv, .rule.draw, #steps, #sig').forEach(el => el.classList.add('in'));
 
+  /* ---- effects (original code) ---- */
+  const wrapWords = (root, make) => {
+    const walk = node => [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(part => {
+          if (!part) return;
+          frag.appendChild(/^\s+$/.test(part) ? document.createTextNode(part) : make(part));
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1 && n.tagName !== 'BR') walk(n);
+    });
+    walk(root);
+  };
+
+  /* headings rise word by word */
+  if (!reduce && 'IntersectionObserver' in window) {
+    const heads = document.querySelectorAll('main h2:not(.label), .work-head h3');
+    const hio = new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('shown'); hio.unobserve(en.target); }
+    }), { threshold: .3 });
+    heads.forEach(h => {
+      let i = 0;
+      wrapWords(h, word => {
+        const w = document.createElement('span'); w.className = 'w';
+        const inner = document.createElement('span'); inner.textContent = word;
+        inner.style.transitionDelay = `${(i++) * 55 + 120}ms`;
+        w.appendChild(inner); return w;
+      });
+      h.classList.add('split');
+      requestAnimationFrame(() => hio.observe(h));
+    });
+  }
+
+  /* the perspective quote fills in word by word as it scrolls past */
+  const quote = document.querySelector('.intro blockquote');
+  if (quote && !reduce) {
+    const qw = [];
+    wrapWords(quote, word => { const s = document.createElement('span'); s.className = 'qw'; s.textContent = word; qw.push(s); return s; });
+    let qt = false;
+    const fill = () => {
+      qt = false;
+      const r = quote.getBoundingClientRect(), vh = innerHeight;
+      const p = Math.min(1, Math.max(0, (vh * .82 - r.top) / (r.height + vh * .3)));
+      const n = Math.round(p * qw.length);
+      qw.forEach((w, i) => w.classList.toggle('lit', i < n));
+    };
+    addEventListener('scroll', () => { if (!qt) { qt = true; requestAnimationFrame(fill); } }, { passive: true });
+    addEventListener('resize', fill); fill();
+  }
+
+  /* fact numbers roll into place */
+  const facts = document.querySelector('.facts');
+  if (facts && !reduce && 'IntersectionObserver' in window) {
+    const strips = [];
+    const originals = [];
+    facts.querySelectorAll('.fact b').forEach(b => {
+      originals.push([b, b.innerHTML]);
+      b.setAttribute('aria-label', b.textContent.trim());
+      const walk = node => [...node.childNodes].forEach(n => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          [...n.textContent].forEach(ch => {
+            if (!/\d/.test(ch)) { frag.appendChild(document.createTextNode(ch)); return; }
+            const roll = document.createElement('span'); roll.className = 'roll'; roll.setAttribute('aria-hidden', 'true');
+            const strip = document.createElement('span');
+            for (let k = 0; k < 20; k++) { const d = document.createElement('span'); d.textContent = k % 10; strip.appendChild(d); }
+            roll.appendChild(strip); frag.appendChild(roll);
+            strips.push([strip, 10 + +ch]);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) walk(n);
+      });
+      walk(b);
+    });
+    const fio = new IntersectionObserver(es => {
+      if (!es.some(e => e.isIntersecting)) return;
+      strips.forEach(([s, to], i) => setTimeout(() => { s.style.transform = `translateY(-${to * 1.15}em)`; }, 250 + i * 140));
+      setTimeout(() => originals.forEach(([el, html]) => { el.innerHTML = html; el.removeAttribute('aria-label'); }), 250 + strips.length * 140 + 2400);
+      fio.disconnect();
+    }, { threshold: .4 });
+    fio.observe(facts);
+  }
+
+  /* approach cards: earlier cards ease back as the next one slides over */
+  const cards = [...document.querySelectorAll('.steps.stack .step')];
+  if (cards.length && !reduce) {
+    let ct = false;
+    const stack = () => {
+      ct = false;
+      cards.forEach((c, i) => {
+        const next = cards[i + 1];
+        if (!next) return;
+        const a = c.getBoundingClientRect(), b = next.getBoundingClientRect();
+        const p = Math.min(1, Math.max(0, 1 - (b.top - a.top - 26) / a.height));
+        c.style.transform = `scale(${1 - p * .05})`;
+        c.style.filter = `brightness(${1 - p * .35})`;
+      });
+    };
+    addEventListener('scroll', () => { if (!ct) { ct = true; requestAnimationFrame(stack); } }, { passive: true });
+    addEventListener('resize', stack); stack();
+  }
+
   /* copy email */
   const cb = document.getElementById('copyMail'), addr = document.getElementById('mailAddr');
   cb.addEventListener('click', () => {

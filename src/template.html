@@ -87,6 +87,7 @@
 
 <header class="hero" id="top">
   <canvas id="constellation" aria-hidden="true"></canvas>
+  <div class="rings" aria-hidden="true"><i class="r1"></i><i class="r2"></i><i class="r3"></i><i class="r4"></i></div>
   <div class="wrap">
     <div class="hero-copy">
       <p class="label fade m0">{{hero_eyebrow}}</p>
@@ -139,21 +140,58 @@
       <div class="svc-list">
         <article class="svc rv">
           <span class="num">i.</span>
-          <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="3" y="7" width="28" height="20"/><path d="M3 12h28"/><path d="M8 18h9M8 22h6"/><rect x="21" y="16" width="6" height="7"/></svg>{{web_t}}</h3>
+          <div class="svc-t">
+            <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="3" y="7" width="28" height="20"/><path d="M3 12h28"/><path d="M8 18h9M8 22h6"/><rect x="21" y="16" width="6" height="7"/></svg>{{web_t}}</h3>
+          <figure class="mock mock-web" aria-hidden="true">
+            <div class="mk-bar"><i></i><i></i><i></i><span>{{mk_url}}</span></div>
+            <div class="mk-body">
+              <b class="mk-l w60"></b><b class="mk-l w85 thin"></b><b class="mk-l w70 thin"></b>
+              <span class="mk-btn"></span>
+              <div class="mk-cards"><span></span><span></span><span></span></div>
+            </div>
+          </figure>
+          </div>
           <div><p>{{web_p}}</p>
             <ul><li>{{web_1}}</li><li>{{web_2}}</li><li>{{web_3}}</li></ul></div>
           <a class="ulink go" href="#contact">{{discuss}}</a>
         </article>
         <article class="svc rv">
           <span class="num">ii.</span>
-          <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="3" y="6" width="20" height="16"/><path d="M3 10h20"/><rect x="20" y="13" width="11" height="17" rx="1.5"/><path d="M24 27h3"/></svg>{{dev_t}}</h3>
+          <div class="svc-t">
+            <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="3" y="6" width="20" height="16"/><path d="M3 10h20"/><rect x="20" y="13" width="11" height="17" rx="1.5"/><path d="M24 27h3"/></svg>{{dev_t}}</h3>
+          <figure class="mock mock-app" aria-hidden="true">
+            <div class="mk-phone">
+              <div class="mk-notch"></div>
+              <div class="mk-chart"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="mk-row"><i></i><b class="mk-l w70"></b></div>
+              <div class="mk-row"><i></i><b class="mk-l w55"></b></div>
+              <div class="mk-row"><i></i><b class="mk-l w80"></b></div>
+              <div class="mk-tabs"><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="mk-panel">
+              <b class="mk-l w60"></b>
+              <div class="mk-grid"><span></span><span></span><span></span><span></span></div>
+              <b class="mk-l w85 thin"></b><b class="mk-l w70 thin"></b>
+            </div>
+          </figure>
+          </div>
           <div><p>{{dev_p}}</p>
             <ul><li>{{dev_1}}</li><li>{{dev_2}}</li><li>{{dev_3}}</li></ul></div>
           <a class="ulink go" href="#contact">{{discuss}}</a>
         </article>
         <article class="svc rv">
           <span class="num">iii.</span>
-          <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M9 24c-3.5 0-6-2.4-6-5.6 0-3 2.2-5.3 5.2-5.6C9.1 9.4 12.2 7 16 7c4.7 0 8.3 3.4 8.8 7.8 2.6.5 4.2 2.6 4.2 5 0 3-2.5 5.2-5.6 5.2"/><path d="M17 30V20M13 24l4-4 4 4"/></svg>{{cl_t}}</h3>
+          <div class="svc-t">
+            <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M9 24c-3.5 0-6-2.4-6-5.6 0-3 2.2-5.3 5.2-5.6C9.1 9.4 12.2 7 16 7c4.7 0 8.3 3.4 8.8 7.8 2.6.5 4.2 2.6 4.2 5 0 3-2.5 5.2-5.6 5.2"/><path d="M17 30V20M13 24l4-4 4 4"/></svg>{{cl_t}}</h3>
+          <figure class="mock mock-cloud" aria-hidden="true">
+            <div class="mk-bar"><span>status</span><em>● live</em></div>
+            <div class="mk-srv"><i></i><span>web-01</span><b class="mk-meter"><s></s></b></div>
+            <div class="mk-srv"><i></i><span>api-01</span><b class="mk-meter m2"><s></s></b></div>
+            <div class="mk-srv"><i></i><span>db-01</span><b class="mk-meter m3"><s></s></b></div>
+            <svg class="mk-spark" viewBox="0 0 240 44" preserveAspectRatio="none"><path d="M0 34 L20 30 L40 32 L60 22 L80 26 L100 18 L120 24 L140 14 L160 20 L180 12 L200 16 L220 8 L240 12"/></svg>
+            <div class="mk-foot"><span>backup</span><span>✓ 03:00</span></div>
+          </figure>
+          </div>
           <div><p>{{cl_p}}</p>
             <ul><li>{{cl_1}}</li><li>{{cl_2}}</li><li>{{cl_3}}</li></ul></div>
           <a class="ulink go" href="#contact">{{discuss}}</a>
@@ -192,12 +230,11 @@
         <div class="l rv"><div class="label">{{s3_label}}</div><h2 id="approach-h">{{s3_title}}</h2></div>
         <p class="rv">{{s3_lead}}</p>
       </div>
-      <div class="steps" id="steps">
-        <div class="track" aria-hidden="true"><i></i></div>
-        <div class="step rv"><span class="rn">I.</span><h3>{{st1_t}}</h3><p>{{st1_p}}</p></div>
-        <div class="step rv"><span class="rn">II.</span><h3>{{st2_t}}</h3><p>{{st2_p}}</p></div>
-        <div class="step rv"><span class="rn">III.</span><h3>{{st3_t}}</h3><p>{{st3_p}}</p></div>
-        <div class="step rv"><span class="rn">IV.</span><h3>{{st4_t}}</h3><p>{{st4_p}}</p></div>
+      <div class="steps stack" id="steps">
+        <div class="step"><div class="st-top"><span class="rn">I.</span><span class="st-n">01 / 04</span></div><div class="st-body"><h3>{{st1_t}}</h3><p>{{st1_p}}</p></div></div>
+        <div class="step"><div class="st-top"><span class="rn">II.</span><span class="st-n">02 / 04</span></div><div class="st-body"><h3>{{st2_t}}</h3><p>{{st2_p}}</p></div></div>
+        <div class="step"><div class="st-top"><span class="rn">III.</span><span class="st-n">03 / 04</span></div><div class="st-body"><h3>{{st3_t}}</h3><p>{{st3_p}}</p></div></div>
+        <div class="step"><div class="st-top"><span class="rn">IV.</span><span class="st-n">04 / 04</span></div><div class="st-body"><h3>{{st4_t}}</h3><p>{{st4_p}}</p></div></div>
       </div>
     </div>
   </section>
