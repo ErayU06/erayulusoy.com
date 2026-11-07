@@ -43,47 +43,101 @@
     setTimeout(tick, 1500);
   }
 
-  /* constellation: slow gold network, reacts gently to the pointer */
-  const makeField = (canvas, opts) => {
+  /* hero particle field: fine gold / ivory dust that drifts and parts around the pointer */
+  const particleField = canvas => {
     const ctx = canvas.getContext('2d');
-    let W, H, pts = [];
-    const m = { x: -1e4, y: -1e4 };
+    const host = canvas.parentElement;
+    const COLORS = ['212,188,138', '184,155,100', '245,241,232', '150,162,196'];
+    let W, H, P = [], running = true, t = 0;
+    const m = { x: -1e4, y: -1e4, active: false };
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    const gauss = () => (Math.random() + Math.random() + Math.random() - 1.5) / 1.5;
+    const add = (x, y, o) => {
+      if (x < -20 || x > W + 20 || y < -20 || y > H + 20) return;
+      const r = Math.random();
+      const c = o.c != null ? o.c : r < .5 ? 0 : r < .68 ? 1 : r < .88 ? 2 : 3;
+      P.push({ hx: x, hy: y, x, y, vx: 0, vy: 0, c, a: o.a != null ? o.a : rnd(.25, .85), s: o.s || (Math.random() < .12 ? 1.6 : 1),
+        ph: Math.random() * 6.283, sp: rnd(.2, .7), amp: rnd(.6, 3) });
+    };
+    const build = () => {
+      P = [];
+      const mobile = W < 700;
+      const k = Math.min(1.25, (W * H) / (1440 * 900));
+      const dust = Math.round((mobile ? 1800 : 4400) * Math.max(.45, k));
+      /* dust: heavier toward the right, in soft clumps */
+      const clumps = Array.from({ length: mobile ? 6 : 10 }, () => ({ x: W * rnd(mobile ? .1 : .42, 1.02), y: H * rnd(-.05, 1.05), r: rnd(90, 260) }));
+      for (let i = 0; i < dust; i++) {
+        if (Math.random() < .62) { const c = clumps[i % clumps.length]; add(c.x + gauss() * c.r * 1.6, c.y + gauss() * c.r, {}); }
+        else add(W * Math.pow(Math.random(), .55), H * Math.random(), { a: rnd(.2, .6) });
+      }
+      /* long faint arcs sweeping across */
+      const arcs = mobile ? [[W * 1.05, -H * .1, W * .8]] : [[W * .98, -H * .2, W * .42], [W * 1.08, H * .55, W * .3], [-W * .2, H * 1.6, W * .78]];
+      arcs.forEach(([cx, cy, R], j) => {
+        const n = Math.round(R * 2.2);
+        for (let i = 0; i < n; i++) { const th = Math.random() * 6.283, rr = R + gauss() * 7; add(cx + Math.cos(th) * rr, cy + Math.sin(th) * rr, { c: j === 1 ? 2 : 0, a: rnd(.3, .8) }); }
+      });
+      /* small bright loops scattered in the cloud */
+      const loops = mobile ? 4 : 9;
+      for (let l = 0; l < loops; l++) {
+        const cx = W * rnd(mobile ? .15 : .45, .97), cy = H * rnd(.2, .92), rx = rnd(8, 34), ry = rx * rnd(.35, 1), rot = Math.random() * 3.14;
+        const n = Math.round(rx * 4.5);
+        for (let i = 0; i < n; i++) {
+          const th = (i / n) * 6.283, ex = Math.cos(th) * rx + gauss() * 1.2, ey = Math.sin(th) * ry + gauss() * 1.2;
+          add(cx + ex * Math.cos(rot) - ey * Math.sin(rot), cy + ex * Math.sin(rot) + ey * Math.cos(rot), { c: 0, a: rnd(.75, 1), s: 1.5 });
+        }
+      }
+      /* short curved strokes, like threads */
+      for (let l = 0; l < (mobile ? 5 : 12); l++) {
+        let x = W * rnd(mobile ? .1 : .45, 1), y = H * Math.random(), ang = Math.random() * 6.283;
+        const len = rnd(30, 110), turn = rnd(-.04, .04);
+        for (let i = 0; i < len; i += 1.4) { x += Math.cos(ang) * 1.4; y += Math.sin(ang) * 1.4; ang += turn; add(x + gauss(), y + gauss(), { c: Math.random() < .7 ? 0 : 2, a: rnd(.5, .9), s: 1.3 }); }
+      }
+    };
     const size = () => {
       const r = canvas.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
       W = r.width; H = r.height; canvas.width = W * d; canvas.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
-      const n = Math.round(Math.min(opts.max, Math.max(opts.min, W * H / opts.density)));
-      pts = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * opts.speed, vy: (Math.random() - .5) * opts.speed, r: Math.random() < .08 ? 2.2 : 1 }));
+      build();
     };
+    const R = 130, R2 = R * R, G2 = (R * 1.6) * (R * 1.6), LV = 10;
+    const STYLES = COLORS.map(c => Array.from({ length: LV + 1 }, (_, i) => `rgba(${c},${(i / LV).toFixed(2)})`));
+    const buckets = Array.from({ length: COLORS.length * (LV + 1) }, () => []);
     const frame = () => {
+      t += .016;
       ctx.clearRect(0, 0, W, H);
-      for (const p of pts) {
-        if (!reduce) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
-      }
-      for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
-        const a = pts[i], b = pts[j], d = Math.hypot(a.x - b.x, a.y - b.y);
-        if (d < opts.link) {
-          const near = Math.hypot((a.x + b.x) / 2 - m.x, (a.y + b.y) / 2 - m.y) < 180;
-          ctx.strokeStyle = `rgba(184,155,100,${(1 - d / opts.link) * (near ? .55 : opts.alpha)})`;
-          ctx.lineWidth = .6; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      for (const b of buckets) b.length = 0;
+      const mx = m.x, my = m.y, act = m.active;
+      for (let i = 0; i < P.length; i++) {
+        const p = P[i];
+        let a = p.a;
+        if (!reduce) {
+          const ox = p.hx + Math.cos(t * p.sp + p.ph) * p.amp, oy = p.hy + Math.sin(t * p.sp * 1.3 + p.ph) * p.amp;
+          let fx = (ox - p.x) * .018, fy = (oy - p.y) * .018;
+          if (act) {
+            const dx = p.x - mx, dy = p.y - my, d2 = dx * dx + dy * dy;
+            if (d2 < G2) {
+              const d = Math.sqrt(d2) || .1;
+              a += (1 - d / (R * 1.6)) * .5;
+              if (d2 < R2) { const f = (1 - d / R) * 2.4; fx += (dx + -dy * .35) / d * f; fy += (dy + dx * .35) / d * f; }
+            }
+          }
+          p.vx = (p.vx + fx) * .9; p.vy = (p.vy + fy) * .9; p.x += p.vx; p.y += p.vy;
         }
+        buckets[p.c * (LV + 1) + Math.min(LV, Math.round(a * LV))].push(p);
       }
-      for (const p of pts) {
-        const near = Math.hypot(p.x - m.x, p.y - m.y) < 140;
-        ctx.fillStyle = p.r > 2 ? 'rgba(212,188,138,.9)' : `rgba(245,241,232,${near ? .8 : .35})`;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
-        if (p.r > 2) { ctx.strokeStyle = 'rgba(184,155,100,.35)'; ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, Math.PI * 2); ctx.stroke(); }
+      for (let k = 0; k < buckets.length; k++) {
+        const b = buckets[k]; if (!b.length) continue;
+        ctx.fillStyle = STYLES[(k / (LV + 1)) | 0][k % (LV + 1)];
+        for (let j = 0; j < b.length; j++) { const p = b[j]; ctx.fillRect(p.x, p.y, p.s, p.s); }
       }
       if (!reduce && running) requestAnimationFrame(frame);
     };
-    let running = true;
     size(); frame();
-    addEventListener('resize', () => { size(); if (reduce) frame(); });
-    const host = canvas.parentElement;
-    host.addEventListener('pointermove', e => { const r = canvas.getBoundingClientRect(); m.x = e.clientX - r.left; m.y = e.clientY - r.top; });
-    host.addEventListener('pointerleave', () => { m.x = m.y = -1e4; });
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { size(); if (reduce) frame(); }, 150); });
+    host.addEventListener('pointermove', e => { const r = canvas.getBoundingClientRect(); m.x = e.clientX - r.left; m.y = e.clientY - r.top; m.active = true; });
+    host.addEventListener('pointerleave', () => { m.active = false; });
     if (!reduce && 'IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(en => { const was = running; running = en.isIntersecting; if (running && !was) frame(); })).observe(canvas);
   };
-  makeField(document.getElementById('constellation'), { min: 30, max: 80, density: 14000, speed: .18, link: 160, alpha: .22 });
+  particleField(document.getElementById('constellation'));
 
   /* subtle parallax on hero canvas */
   const cons = document.getElementById('constellation');

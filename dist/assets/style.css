@@ -479,7 +479,7 @@ footer .meta { display: grid; gap: 8px; text-align: right; font-size: 13px; colo
 .rings::after { content: ""; position: absolute; right: 8%; top: 18%; width: 520px; height: 520px; border-radius: 50%;
   background: radial-gradient(closest-side, rgba(184,155,100,.10), transparent); filter: blur(10px); }
 @keyframes ring-spin { to { transform: rotate(1turn); } }
-#constellation { opacity: .55; }
+#constellation { opacity: 1; }
 @media (max-width: 1000px) {
   .rings .r1 { width: 760px; height: 760px; right: -420px; top: -260px; }
   .rings .r2 { width: 520px; height: 520px; right: -280px; top: 260px; }
