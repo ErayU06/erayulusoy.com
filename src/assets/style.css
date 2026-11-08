@@ -595,7 +595,3 @@ footer .meta { display: grid; gap: 8px; text-align: right; font-size: 13px; colo
 .rings .r1 { --w: 2px; } .rings .r2 { --w: 1.7px; }
 .roll { height: 1.15em; vertical-align: -.08em; }
 .roll > span > span { height: 1.15em; line-height: 1.15; }
-/* the particle field breathes slowly on its own; JS only animates while the pointer is near */
-@keyframes pf-drift { 0%, 100% { translate: 0 0; scale: 1; } 50% { translate: -14px 8px; scale: 1.025; } }
-#constellation { animation: pf-drift 26s ease-in-out infinite; transform-origin: 70% 40%; }
-@media (prefers-reduced-motion: reduce) { #constellation { animation: none; } }

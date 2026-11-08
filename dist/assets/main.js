@@ -48,7 +48,7 @@
     const ctx = canvas.getContext('2d');
     const host = canvas.parentElement;
     const COLORS = ['212,188,138', '184,155,100', '245,241,232', '150,162,196'];
-    let W, H, P = [], running = true;
+    let W, H, P = [], running = true, t = 0;
     const m = { x: -1e4, y: -1e4, active: false };
     const rnd = (a, b) => a + Math.random() * (b - a);
     const gauss = () => (Math.random() + Math.random() + Math.random() - 1.5) / 1.5;
@@ -63,107 +63,79 @@
       P = [];
       const mobile = W < 700;
       const k = Math.min(1.25, (W * H) / (1440 * 900));
-      const dust = Math.round((mobile ? 6000 : 15000) * Math.max(.5, k));
-      /* a smooth swirling field the strands follow */
-      const s1 = rnd(0, 6.28), s2 = rnd(0, 6.28), s3 = rnd(0, 6.28), f = rnd(.0028, .0042);
-      const field = (x, y) => (Math.sin(x * f + s1) * Math.cos(y * f * 1.3 + s2) + .6 * Math.sin((x - y) * f * .7 + s3) + .35 * Math.cos((x + y * 1.6) * f * 2.1 + s1)) * 3.4;
-      const left = mobile ? .02 : .3;
-      /* dust: heavier toward the right, in uneven clumps */
-      const clumps = Array.from({ length: mobile ? 10 : 22 }, () => ({ x: W * rnd(left, 1.04), y: H * rnd(-.08, 1.08), rx: rnd(60, 300), ry: rnd(40, 200), rot: rnd(0, 3.14) }));
+      const dust = Math.round((mobile ? 4200 : 10500) * Math.max(.5, k));
+      /* dust: heavier toward the right, in soft clumps */
+      const clumps = Array.from({ length: mobile ? 8 : 16 }, () => ({ x: W * rnd(mobile ? .05 : .36, 1.02), y: H * rnd(-.05, 1.05), r: rnd(80, 240) }));
       for (let i = 0; i < dust; i++) {
-        const q = Math.random();
-        if (q < .6) {
-          const c = clumps[(Math.random() * clumps.length) | 0];
-          const gx = gauss() * c.rx, gy = gauss() * c.ry;
-          add(c.x + gx * Math.cos(c.rot) - gy * Math.sin(c.rot), c.y + gx * Math.sin(c.rot) + gy * Math.cos(c.rot), { a: rnd(.3, 1) });
-        } else add(W * Math.pow(Math.random(), .4), H * Math.random(), { a: rnd(.2, .7) });
+        if (Math.random() < .66) { const c = clumps[i % clumps.length]; add(c.x + gauss() * c.r * 1.6, c.y + gauss() * c.r, { a: rnd(.35, 1) }); }
+        else add(W * Math.pow(Math.random(), .45), H * Math.random(), { a: rnd(.25, .75) });
       }
-      /* strands: particles laid along the swirling field, thick in the middle, frayed at the ends */
-      const strands = mobile ? 34 : 90;
-      for (let l = 0; l < strands; l++) {
-        let x = W * rnd(left, 1.02), y = H * rnd(-.05, 1.05);
-        const steps = rnd(60, 260) | 0, width = rnd(1.5, 9), dens = rnd(1.2, 3.2), c = Math.random() < .72 ? 0 : Math.random() < .5 ? 2 : 3;
-        for (let i = 0; i < steps; i++) {
-          const ang = field(x, y);
-          x += Math.cos(ang) * 2.2; y += Math.sin(ang) * 2.2;
-          const taper = Math.sin((i / steps) * Math.PI);
-          const n = Math.random() < dens - Math.floor(dens) ? Math.ceil(dens) : Math.floor(dens);
-          for (let k = 0; k < n; k++) add(x + gauss() * width * taper * 2, y + gauss() * width * taper * 2, { c: Math.random() < .85 ? c : 1, a: rnd(.45, 1), s: Math.random() < .3 ? 1.6 : 1.15 });
+      /* long faint arcs sweeping across */
+      const arcs = mobile ? [[W * 1.05, -H * .1, W * .8]] : [[W * .98, -H * .2, W * .42], [W * 1.08, H * .55, W * .3], [-W * .2, H * 1.6, W * .78]];
+      arcs.forEach(([cx, cy, R], j) => {
+        const n = Math.round(R * 4.5);
+        for (let i = 0; i < n; i++) { const th = Math.random() * 6.283, rr = R + gauss() * 7; add(cx + Math.cos(th) * rr, cy + Math.sin(th) * rr, { c: j === 1 ? 2 : 0, a: rnd(.3, .8) }); }
+      });
+      /* small bright loops scattered in the cloud */
+      const loops = mobile ? 7 : 18;
+      for (let l = 0; l < loops; l++) {
+        const cx = W * rnd(mobile ? .15 : .45, .97), cy = H * rnd(.2, .92), rx = rnd(8, 34), ry = rx * rnd(.35, 1), rot = Math.random() * 3.14;
+        const n = Math.round(rx * 6);
+        for (let i = 0; i < n; i++) {
+          const th = (i / n) * 6.283, ex = Math.cos(th) * rx + gauss() * 1.2, ey = Math.sin(th) * ry + gauss() * 1.2;
+          add(cx + ex * Math.cos(rot) - ey * Math.sin(rot), cy + ex * Math.sin(rot) + ey * Math.cos(rot), { c: 0, a: rnd(.75, 1), s: 1.5 });
         }
       }
-      /* bright scattered fragments: tiny broken bursts */
-      for (let l = 0; l < (mobile ? 18 : 46); l++) {
-        const cx = W * rnd(left + .05, 1), cy = H * rnd(.15, .95), r = rnd(4, 18), n = (r * rnd(2, 4)) | 0;
-        for (let i = 0; i < n; i++) { const th = Math.random() * 6.283, rr = r * Math.pow(Math.random(), .6); add(cx + Math.cos(th) * rr * rnd(.4, 1.6), cy + Math.sin(th) * rr, { c: 0, a: rnd(.7, 1), s: 1.5 }); }
+      /* short curved strokes, like threads */
+      for (let l = 0; l < (mobile ? 10 : 26); l++) {
+        let x = W * rnd(mobile ? .1 : .45, 1), y = H * Math.random(), ang = Math.random() * 6.283;
+        const len = rnd(30, 110), turn = rnd(-.04, .04);
+        for (let i = 0; i < len; i += 1.4) { x += Math.cos(ang) * 1.4; y += Math.sin(ang) * 1.4; ang += turn; add(x + gauss(), y + gauss(), { c: Math.random() < .7 ? 0 : 2, a: rnd(.5, .9), s: 1.3 }); }
       }
     };
-    let grid = new Map(), CELL = 60, statics = [], scaleX = 1, scaleY = 1;
-    const LV = 10;
-    const STYLES = COLORS.map(c => Array.from({ length: LV + 1 }, (_, i) => `rgba(${c},${(i / LV).toFixed(2)})`));
     const size = () => {
-      const r = canvas.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 1.5);
-      W = canvas.offsetWidth; H = canvas.offsetHeight; canvas.width = W * d; canvas.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+      const r = canvas.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
+      W = r.width; H = r.height; canvas.width = W * d; canvas.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0);
       build();
-      /* pre-sort particles into colour/alpha buckets once, and index them on a grid */
-      statics = Array.from({ length: COLORS.length * (LV + 1) }, () => []);
-      grid = new Map();
-      for (const p of P) {
-        statics[p.c * (LV + 1) + Math.min(LV, Math.round(p.a * LV))].push(p);
-        const key = ((p.hx / CELL) | 0) + ',' + ((p.hy / CELL) | 0);
-        let g = grid.get(key); if (!g) grid.set(key, g = []); g.push(p);
-      }
-      active.clear(); paintBase(); draw();
     };
-    const R = 120, R2 = R * R;
-    const active = new Set();
-    const base = document.createElement('canvas'), bctx = base.getContext('2d');
-    const paintBase = () => {
-      const d = canvas.width / W;
-      base.width = canvas.width; base.height = canvas.height; bctx.setTransform(d, 0, 0, d, 0, 0);
-      for (let k = 0; k < statics.length; k++) {
-        const b = statics[k]; if (!b.length) continue;
-        bctx.fillStyle = STYLES[(k / (LV + 1)) | 0][k % (LV + 1)];
-        for (let j = 0; j < b.length; j++) { const p = b[j]; bctx.fillRect(p.hx, p.hy, p.s, p.s); }
-      }
-    };
-    /* the resting field is one cached image; only particles the pointer disturbs are redrawn */
-    const draw = () => {
-      ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.drawImage(base, 0, 0);
-      const d = canvas.width / W; ctx.setTransform(d, 0, 0, d, 0, 0);
-      if (!active.size) return;
-      for (const p of active) ctx.clearRect(p.hx - .4, p.hy - .4, p.s + .8, p.s + .8);
-      for (const p of active) {
+    const R = 150, R2 = R * R, G2 = (R * 1.6) * (R * 1.6), LV = 10;
+    const STYLES = COLORS.map(c => Array.from({ length: LV + 1 }, (_, i) => `rgba(${c},${(i / LV).toFixed(2)})`));
+    const buckets = Array.from({ length: COLORS.length * (LV + 1) }, () => []);
+    const frame = () => {
+      t += .016;
+      ctx.clearRect(0, 0, W, H);
+      for (const b of buckets) b.length = 0;
+      const mx = m.x, my = m.y, act = m.active;
+      for (let i = 0; i < P.length; i++) {
+        const p = P[i];
         let a = p.a;
-        if (m.active) { const dx = p.x - m.x, dy = p.y - m.y, g = 1 - Math.sqrt(dx * dx + dy * dy) / (R * 1.5); if (g > 0) a += g * .5; }
-        ctx.fillStyle = STYLES[p.c][Math.min(LV, Math.round(a * LV))];
-        ctx.fillRect(p.x, p.y, p.s, p.s);
+        if (!reduce) {
+          const ox = p.hx + Math.cos(t * p.sp + p.ph) * p.amp, oy = p.hy + Math.sin(t * p.sp * 1.3 + p.ph) * p.amp;
+          let fx = (ox - p.x) * .018, fy = (oy - p.y) * .018;
+          if (act) {
+            const dx = p.x - mx, dy = p.y - my, d2 = dx * dx + dy * dy;
+            if (d2 < G2) {
+              const d = Math.sqrt(d2) || .1;
+              a += (1 - d / (R * 1.6)) * .5;
+              if (d2 < R2) { const f = (1 - d / R) * 2.4; fx += (dx + -dy * .35) / d * f; fy += (dy + dx * .35) / d * f; }
+            }
+          }
+          p.vx = (p.vx + fx) * .9; p.vy = (p.vy + fy) * .9; p.x += p.vx; p.y += p.vy;
+        }
+        buckets[p.c * (LV + 1) + Math.min(LV, Math.round(a * LV))].push(p);
       }
+      for (let k = 0; k < buckets.length; k++) {
+        const b = buckets[k]; if (!b.length) continue;
+        ctx.fillStyle = STYLES[(k / (LV + 1)) | 0][k % (LV + 1)];
+        for (let j = 0; j < b.length; j++) { const p = b[j]; ctx.fillRect(p.x, p.y, p.s, p.s); }
+      }
+      if (!reduce && running) requestAnimationFrame(frame);
     };
-    let looping = false;
-    const step = () => {
-      if (m.active) {
-        const c0 = ((m.x - R) / CELL) | 0, c1 = ((m.x + R) / CELL) | 0, r0 = ((m.y - R) / CELL) | 0, r1 = ((m.y + R) / CELL) | 0;
-        for (let cx = c0; cx <= c1; cx++) for (let cy = r0; cy <= r1; cy++) { const g = grid.get(cx + ',' + cy); if (g) for (const p of g) active.add(p); }
-      }
-      for (const p of active) {
-        let fx = (p.hx - p.x) * .03, fy = (p.hy - p.y) * .03;
-        const dx = p.x - m.x, dy = p.y - m.y, d2 = dx * dx + dy * dy;
-        if (m.active && d2 < R2) { const d = Math.sqrt(d2) || .1, f = (1 - d / R) * 2.6; fx += (dx - dy * .35) / d * f; fy += (dy + dx * .35) / d * f; }
-        p.vx = (p.vx + fx) * .88; p.vy = (p.vy + fy) * .88; p.x += p.vx; p.y += p.vy;
-        if ((!m.active || d2 > R2 * 1.4) && Math.abs(p.x - p.hx) < .3 && Math.abs(p.y - p.hy) < .3 && Math.abs(p.vx) + Math.abs(p.vy) < .05) { p.x = p.hx; p.y = p.hy; p.vx = p.vy = 0; active.delete(p); }
-      }
-      draw();
-      if (running && (m.active || active.size)) requestAnimationFrame(step); else looping = false;
-    };
-    const kick = () => { if (!looping && !reduce && running) { looping = true; requestAnimationFrame(step); } };
-    size();
-    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 150); });
-    host.addEventListener('pointermove', e => {
-      const r = canvas.getBoundingClientRect();
-      m.x = (e.clientX - r.left) * (W / r.width); m.y = (e.clientY - r.top) * (H / r.height); m.active = true; kick();
-    });
-    host.addEventListener('pointerleave', () => { m.active = false; kick(); });
-    if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(en => { running = en.isIntersecting; if (running) kick(); })).observe(canvas);
+    size(); frame();
+    let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { size(); if (reduce) frame(); }, 150); });
+    host.addEventListener('pointermove', e => { const r = canvas.getBoundingClientRect(); m.x = e.clientX - r.left; m.y = e.clientY - r.top; m.active = true; });
+    host.addEventListener('pointerleave', () => { m.active = false; });
+    if (!reduce && 'IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(en => { const was = running; running = en.isIntersecting; if (running && !was) frame(); })).observe(canvas);
   };
   particleField(document.getElementById('constellation'));
 
