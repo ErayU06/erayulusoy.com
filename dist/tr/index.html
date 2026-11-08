@@ -35,8 +35,8 @@
 <link rel="manifest" href="../site.webmanifest">
 <link rel="preload" href="../assets/fonts/playfair-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/manrope-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/style.css?v=202611041746">
-<script src="../assets/boot.js?v=202611041746"></script>
+<link rel="stylesheet" href="../assets/style.css?v=202611080413">
+<script src="../assets/boot.js?v=202611080413"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://erayulusoy.com/#person", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/", "image": "https://erayulusoy.com/og-image.jpg", "jobTitle": "Web Tasarımcı ve Yazılım Mühendisi", "email": "mailto:contact@erayulusoy.com", "sameAs": ["https://www.linkedin.com/in/eray-ulusoy"], "knowsAbout": ["Web design", "Web development", "Mobile app development", "Business applications", "Cloud computing", "AWS", "SEO"], "knowsLanguage": ["tr", "en"]}, {"@type": "ProfessionalService", "@id": "https://erayulusoy.com/#business", "name": "Eray Ulusoy", "url": "https://erayulusoy.com/tr/", "image": "https://erayulusoy.com/og-image.jpg", "email": "contact@erayulusoy.com", "founder": {"@id": "https://erayulusoy.com/#person"}, "sameAs": ["https://www.linkedin.com/in/eray-ulusoy"], "areaServed": "Worldwide", "description": "Eray Ulusoy; işletmelere ve şirketlere güvenli ve profesyonel web sitesi tasarımı, web ve mobil uygulama geliştirme ve AWS bulut bilişim hizmetleri sunar.", "knowsAbout": ["Web sitesi tasarımı", "Web sitesi yapımı", "Mobil uygulama geliştirme", "Kurumsal yazılım", "Bulut bilişim"]}, {"@type": "WebSite", "@id": "https://erayulusoy.com/#website", "url": "https://erayulusoy.com/", "name": "Eray Ulusoy", "inLanguage": ["en", "tr"], "publisher": {"@id": "https://erayulusoy.com/#person"}}]}</script>
 </head>
 <body>
@@ -87,6 +87,7 @@
 
 <header class="hero" id="top">
   <canvas id="constellation" aria-hidden="true"></canvas>
+  <div class="rings" aria-hidden="true"><i class="r1"></i><i class="r2"></i><i class="r3"></i><i class="r4"></i></div>
   <div class="wrap">
     <div class="hero-copy">
       <p class="label fade m0">Eray Ulusoy · Web Sitesi, İş Uygulamaları ve Bulut</p>
@@ -139,21 +140,58 @@
       <div class="svc-list">
         <article class="svc rv">
           <span class="num">i.</span>
-          <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="3" y="7" width="28" height="20"/><path d="M3 12h28"/><path d="M8 18h9M8 22h6"/><rect x="21" y="16" width="6" height="7"/></svg>Kurumsal Web Siteleri</h3>
+          <div class="svc-t">
+            <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="3" y="7" width="28" height="20"/><path d="M3 12h28"/><path d="M8 18h9M8 22h6"/><rect x="21" y="16" width="6" height="7"/></svg>Kurumsal Web Siteleri</h3>
+          <figure class="mock mock-web" aria-hidden="true">
+            <div class="mk-bar"><i></i><i></i><i></i><span>sirketiniz.com<u></u></span></div>
+            <div class="mk-body">
+              <b class="mk-l w60"></b><b class="mk-l w85 thin"></b><b class="mk-l w70 thin"></b>
+              <span class="mk-btn"></span>
+              <div class="mk-cards"><span></span><span></span><span></span></div>
+            </div>
+          </figure>
+          </div>
           <div><p>Markanıza özel tasarlanan hızlı ve şık web siteleri. Her cihazda hızlı açılan, Google’da kolay bulunan ve ziyaretçiyi müşteriye dönüştüren siteler.</p>
             <ul><li>Kurumsal web sitesi yapımı</li><li>Tanıtım sayfaları ve site yenileme</li><li>SEO, SSL ve güvenlik sıkılaştırması</li></ul></div>
           <a class="ulink go" href="#contact">Görüşelim →</a>
         </article>
         <article class="svc rv">
           <span class="num">ii.</span>
-          <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="3" y="6" width="20" height="16"/><path d="M3 10h20"/><rect x="20" y="13" width="11" height="17" rx="1.5"/><path d="M24 27h3"/></svg>İş Uygulamaları</h3>
+          <div class="svc-t">
+            <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="3" y="6" width="20" height="16"/><path d="M3 10h20"/><rect x="20" y="13" width="11" height="17" rx="1.5"/><path d="M24 27h3"/></svg>İş Uygulamaları</h3>
+          <figure class="mock mock-app" aria-hidden="true">
+            <div class="mk-phone">
+              <div class="mk-notch"></div>
+              <div class="mk-chart"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="mk-row"><i></i><b class="mk-l w70"></b></div>
+              <div class="mk-row"><i></i><b class="mk-l w55"></b></div>
+              <div class="mk-row"><i></i><b class="mk-l w80"></b></div>
+              <div class="mk-tabs"><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="mk-panel">
+              <b class="mk-l w60"></b>
+              <div class="mk-grid"><span></span><span></span><span></span><span></span></div>
+              <b class="mk-l w85 thin"></b><b class="mk-l w70 thin"></b>
+            </div>
+          </figure>
+          </div>
           <div><p>Şirketinizin işlerini kolaylaştıran web ve mobil uygulamalar: müşteri panelleri, randevu ve sipariş sistemleri, raporlama ekranları ve şirket içi araçlar.</p>
             <ul><li>Web ve mobil uygulama geliştirme</li><li>Yönetim panelleri ve raporlama ekranları</li><li>Güvenli giriş, veri koruma ve entegrasyonlar</li></ul></div>
           <a class="ulink go" href="#contact">Görüşelim →</a>
         </article>
         <article class="svc rv">
           <span class="num">iii.</span>
-          <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M9 24c-3.5 0-6-2.4-6-5.6 0-3 2.2-5.3 5.2-5.6C9.1 9.4 12.2 7 16 7c4.7 0 8.3 3.4 8.8 7.8 2.6.5 4.2 2.6 4.2 5 0 3-2.5 5.2-5.6 5.2"/><path d="M17 30V20M13 24l4-4 4 4"/></svg>Bulut Bilişim</h3>
+          <div class="svc-t">
+            <h3><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M9 24c-3.5 0-6-2.4-6-5.6 0-3 2.2-5.3 5.2-5.6C9.1 9.4 12.2 7 16 7c4.7 0 8.3 3.4 8.8 7.8 2.6.5 4.2 2.6 4.2 5 0 3-2.5 5.2-5.6 5.2"/><path d="M17 30V20M13 24l4-4 4 4"/></svg>Bulut Bilişim</h3>
+          <figure class="mock mock-cloud" aria-hidden="true">
+            <div class="mk-bar"><span>status</span><em>● live</em></div>
+            <div class="mk-srv"><i></i><span>web-01</span><b class="mk-meter"><s></s></b></div>
+            <div class="mk-srv"><i></i><span>api-01</span><b class="mk-meter m2"><s></s></b></div>
+            <div class="mk-srv"><i></i><span>db-01</span><b class="mk-meter m3"><s></s></b></div>
+            <svg class="mk-spark" viewBox="0 0 240 44" preserveAspectRatio="none"><path d="M0 34 L20 30 L40 32 L60 22 L80 26 L100 18 L120 24 L140 14 L160 20 L180 12 L200 16 L220 8 L240 12"/><path class="mk-flow" d="M0 34 L20 30 L40 32 L60 22 L80 26 L100 18 L120 24 L140 14 L160 20 L180 12 L200 16 L220 8 L240 12"/></svg>
+            <div class="mk-foot"><span>backup</span><span>✓ 03:00</span></div>
+          </figure>
+          </div>
           <div><p>AWS ve Cloudflare üzerinde güvenilir altyapı. Sitelerinizi ve uygulamalarınızı barındırır, buluta taşır ve bakımını yaparım; hızlı, yedekli ve her zaman erişilebilir kalırlar.</p>
             <ul><li>Barındırma ve bulut kurulumu</li><li>Buluta taşıma</li><li>Yedekleme, izleme ve bakım</li></ul></div>
           <a class="ulink go" href="#contact">Görüşelim →</a>
@@ -192,12 +230,11 @@
         <div class="l rv"><div class="label">II — Yaklaşım</div><h2 id="approach-h">İlk görüşmeden teslime kadar net bir yöntem</h2></div>
         <p class="rv">Her proje aynı dört aşamadan geçer; böylece işin nerede olduğunu ve sırada ne olduğunu her zaman bilirsiniz.</p>
       </div>
-      <div class="steps" id="steps">
-        <div class="track" aria-hidden="true"><i></i></div>
-        <div class="step rv"><span class="rn">I.</span><h3>Anlama</h3><p>İşiniz, müşterileriniz ve web sitesinin ya da uygulamanın neyi başarması gerektiği.</p></div>
-        <div class="step rv"><span class="rn">II.</span><h3>Tasarım</h3><p>Sayfa düzenleri, ekranlar ve net bir plan; geliştirme başlamadan önce sizinle birlikte onaylanır.</p></div>
-        <div class="step rv"><span class="rn">III.</span><h3>Geliştirme ve Test</h3><p>Düzenli ön izlemelerle geliştirme; gerçek cihazlarda test ve yayından önce güvenlik açığı kontrolü.</p></div>
-        <div class="step rv"><span class="rn">IV.</span><h3>Yayın ve Destek</h3><p>Güvenilir bulut altyapısında yayına alma, kolayca yönetebileceğiniz bir teslim ve sürekli destek.</p></div>
+      <div class="steps stack" id="steps">
+        <div class="step"><div class="st-top"><span class="rn">I.</span><span class="st-n">01 / 04</span></div><div class="st-body"><h3>Anlama</h3><p>İşiniz, müşterileriniz ve web sitesinin ya da uygulamanın neyi başarması gerektiği.</p></div></div>
+        <div class="step"><div class="st-top"><span class="rn">II.</span><span class="st-n">02 / 04</span></div><div class="st-body"><h3>Tasarım</h3><p>Sayfa düzenleri, ekranlar ve net bir plan; geliştirme başlamadan önce sizinle birlikte onaylanır.</p></div></div>
+        <div class="step"><div class="st-top"><span class="rn">III.</span><span class="st-n">03 / 04</span></div><div class="st-body"><h3>Geliştirme ve Test</h3><p>Düzenli ön izlemelerle geliştirme; gerçek cihazlarda test ve yayından önce güvenlik açığı kontrolü.</p></div></div>
+        <div class="step"><div class="st-top"><span class="rn">IV.</span><span class="st-n">04 / 04</span></div><div class="st-body"><h3>Yayın ve Destek</h3><p>Güvenilir bulut altyapısında yayına alma, kolayca yönetebileceğiniz bir teslim ve sürekli destek.</p></div></div>
       </div>
     </div>
   </section>
@@ -307,6 +344,6 @@
   </div>
 </footer>
 
-<script src="../assets/main.js?v=202611041746" defer></script>
+<script src="../assets/main.js?v=202611080413" defer></script>
 </body>
 </html>

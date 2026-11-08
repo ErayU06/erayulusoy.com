@@ -159,6 +159,7 @@ TR.update(
 
 # ---- Repositioning: websites, business applications and cloud (no cybersecurity service) ----
 EN.update(
+    mk_url='yourcompany.com',
     also_label='Also experienced in', also_1='E-commerce sites', also_2='SEO and Google visibility', also_3='Social media setup and management', also_4='Domains, business email and hosting',
     also_note='…and the everyday technical needs of a growing business.',
     w_label='Published work', w_title='A few of the apps I have designed and built', app_alt='Atlas of Style app icon',
@@ -213,6 +214,7 @@ EN.update(
     footer_tag='Websites · Applications · Cloud',
 )
 TR.update(
+    mk_url='sirketiniz.com',
     also_label='Ayrıca deneyimli olduğum alanlar', also_1='E-ticaret siteleri', also_2='SEO ve Google’da görünürlük', also_3='Sosyal medya kurulumu ve yönetimi', also_4='Alan adı, kurumsal e-posta ve barındırma',
     also_note='…ve büyüyen bir işletmenin günlük teknik ihtiyaçları.',
     w_label='Yayınlanan işler', w_title='Tasarlayıp geliştirdiğim uygulamalardan bazıları', app_alt='Atlas of Style uygulama ikonu',
